@@ -26,8 +26,7 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="form-floating my-2">
-                                <input type="text" name="username" class="form-control" id="floatingInput"
-                                       placeholder="name@example.com">
+                                <input type="text" name="username" class="form-control" id="floatingInput">
                                 <label for="floatingInput">Username</label>
                             </div>
                             <div class="form-floating my-2">
@@ -42,8 +41,10 @@
                             </div>
                         </div>
                     </div>
+                    {#
                     <p class="mt-2 text-white">Account passwords are hashed with bcrypt.</p>
                     <p class="mt-5 mb-3 text-white">By OpenSB Contributors · 2021-{{ 'now' | date('Y') }}</p>
+                    #}
                 </div>
             </form>
         </main>
