@@ -39,6 +39,11 @@
                                 <input type="date" name="birthdate" class="form-control" required/>
                                 <label for="birthdate">Date of birth:</label>
                             </div>
+                            {% if captcha_public_token %}
+                                <div class="my-2">
+                                    <div class="h-captcha" data-sitekey="{{ captcha_public_token }}"></div>
+                                </div>
+                            {% endif %}
                             <div class="d-flex gap-2 justify-content-between">
                                 <input class="btn btn-lg btn-primary flex-grow-1" type="submit" value="Register"
                                        name="action">
