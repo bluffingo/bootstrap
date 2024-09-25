@@ -60,3 +60,8 @@
   margin: 0;
   padding: 0.4em;
 }
+
+// weird hack to fix gap that happens on the navbar when youre logged in
+.navbar-nav {
+  --bs-nav-link-padding-x: auto;
+}
