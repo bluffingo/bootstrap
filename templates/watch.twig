@@ -106,9 +106,19 @@
                 </div>
             </div>
             <div class="col-lg-3">
-                {% for submission in submission.recommended %}
-                    {{ include('/components/smallvideobox.twig') }}
-                {% endfor %}
+                {% if submission.recommended %}
+                    {% for submission in submission.recommended %}
+                        {{ include('/components/smallvideobox.twig') }}
+                    {% endfor %}
+                {% elseif submission.other_by_author %}
+                    {% for submission in submission.other_by_author %}
+                        {{ include('/components/smallvideobox.twig') }}
+                    {% endfor %}
+                {% elseif submission.random %}
+                    {% for submission in submission.random %}
+                        {{ include('/components/smallvideobox.twig') }}
+                    {% endfor %}
+                {% endif %}
             </div>
         </div>
     {% endblock %}
