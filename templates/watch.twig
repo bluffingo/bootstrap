@@ -65,13 +65,18 @@
                                 {% if submission.description | trim is not empty %}
                                     {{ submission.description | markdown_user_written }}
                                 {% else %}
-                                    <p>This submission has no description.</p>
+                                    <p>This upload has no description.</p>
                                 {% endif %}
                             </div>
                             <hr class="mt-2 mb-3"/>
                             <div>
                                 <small>
-                                    Audience rating: {{ submission.rating | capitalize }}
+                                    Rating:
+                                    {% if submission.rating == 'mature' %}
+                                        Sensitive
+                                    {% else %}
+                                        General
+                                    {% endif %}
                                 </small>
                             </div>
                         </div>
