@@ -52,5 +52,10 @@
 {{ include('/components/_footer_default.twig') }}
 {% block postcontent %}{% endblock %}
 {% block scripts %}{% endblock %}
+{% if is_debug %}
+    <div class="offcanvas offcanvas-bottom text-center show" data-bs-scroll="true" data-bs-backdrop="false" style="visibility:visible;height:unset;">
+        <div class="offcanvas-body py-1">{{ profiler_stats() }}</div>
+    </div>
+{% endif %}
 </body>
 </html>
