@@ -36,7 +36,7 @@
 <body>
 {% if show_warning_banner %}
 <div class="alert alert-danger alert-fullscreen">
-    {{ warning_banner_text }}
+    {{ warning_banner_text | raw }}
 </div>
 {% endif %}
 {{ include('/components/_header_default.twig') }}
