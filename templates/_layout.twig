@@ -4,6 +4,8 @@
     {% else %}
         {% if current_theme == "alpha3" %}
             {% set logo = '/assets/sb_branding/bootstrap/logo-alpha3.png' %}
+        {% elseif current_theme == "alpha2" %}
+            {% set logo = '/assets/sb_branding/bootstrap/logo-alpha2.png' %}
         {% else %}
             {% set logo = '/assets/sb_branding/bootstrap/logo.png' %}
         {% endif %}
@@ -48,6 +50,8 @@
     {{ include('/components/_header_default.twig') }}
 {% elseif current_theme == "alpha3" %}
     {{ include('/components/_header_alpha3.twig') }}
+{% elseif current_theme == "alpha2" %}
+    {{ include('/components/_header_alpha2.twig') }}
 {% else %}
     insert header here
 {% endif %}

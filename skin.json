@@ -13,6 +13,12 @@
         "author": "OpenSB developers"
       },
       {
+        "id": "alpha2",
+        "name": "Alpha 2",
+        "description": "Emulates the version of SquareBracket from around May 2021.",
+        "author": "OpenSB developers"
+      },
+      {
         "id": "alpha3",
         "name": "Alpha 3",
         "description": "Emulates the version of SquareBracket from around June 2021.",

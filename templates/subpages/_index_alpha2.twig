@@ -1,0 +1,69 @@
+<div class="row">
+    <div class="col-xl-9">
+        <div class="row" style="margin: 0;">
+            <div class="col-xl-3" style="padding:0;">
+                <div class="card" style="border: 0;border-bottom-left-radius: 0;border-bottom-right-radius: 0;">
+                    <div class="card-header bg-dark text-white" style="border-top-right-radius: 0;">
+                        {% if is_user_logged_in %}
+                            <div class="d-grid gap-2">
+                                Hi there, {{ user_data.name }}
+                            </div>
+                        {% else %}
+                            Welcome
+                        {% endif %}
+                    </div>
+                    {% if is_user_logged_in %}
+                        <!-- BAD HACK BAD HACK BAD HACK -->
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item" style="height: 1.19%;"><img class="float-start rounded"
+                                                                                    style="max-width: 40%;"
+                                                                                    src="{{ profile_picture(user_data.name) }}"
+                                                                                    alt="pfp">
+                                <p class="text-end float-end">
+                                    <a href="settings.php">Edit my profile</a><br>
+                                    <a href="browse.php">Browse</a>
+                                </p>
+                            </li>
+                            <li class="list-group-item">From {{ website_branding.name }}</li>
+                        </ul>
+                    {% else %}
+                        {% if is_chaziz_sb %}
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">This is like any other video sharing site... for now at
+                                    least.
+                                </li>
+                            </ul>
+                        {% endif %}
+                        <div class="card-footer" style="border-bottom-left-radius: 0;border-bottom-right-radius: 0;">
+                            <a href="register.php" class="card-link">Get started</a>
+                            <a href="login.php" class="card-link">Login</a>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="col-xl-9" style="padding:0;">
+                <div class="card" style="border: 0;">
+                    <div class="card-header bg-dark text-white" style="border-top-left-radius: 0">
+                        From {{ website_branding.name }}</div>
+                    <div class="card-body">
+                        {% for submission in data.submissions_new %}
+                            {{ include('/components/videobox.twig') }}
+                        {% else %}
+                            <p>No uploaded videos. :^((</p>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3">
+        <p><small>Spotlight</small></p>
+        {% for news in data.news_recent %}
+            <h5>
+                {{ news.title }}
+            </h5>
+            {{ news.contents | markdown_user_journal }}
+            <p class="blockquote-footer">{{ news.author.info.username }}</p>
+        {% endfor %}
+    </div>
+</div>

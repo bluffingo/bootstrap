@@ -70,6 +70,7 @@ $min-contrast-ratio: 1.50;
   $enable-shadows: true;
   $link-decoration: none;
   $font-family-sans-serif: Roboto, system-ui, -apple-system, "Segoe UI", "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
   $body-bg: #e9eaec;
   $font-size-base: 1rem;
 
@@ -84,12 +85,53 @@ $min-contrast-ratio: 1.50;
   $orange-color: $orange;
 
   $min-contrast-ratio: 4.5; // default one
+} @elseif $theme == "alpha2" {
+  $white: #fff;
+  $gray-100: #f8f9fa;
+  $gray-200: #e9ecef;
+  $gray-300: #dee2e6;
+  $gray-400: #ced4da;
+  $gray-500: #adb5bd;
+  $gray-700: #495057;
+  $gray-800: #343a40;
+  $gray-900: #212529;
+  $black: #000;
+  $indigo: #371cd4;
+  $purple: #523bb8;
+  $pink: #eb46a9;
+  $orange: #e6a417;
+  $yellow: #f5cc18;
+  $blue: #337ab7;
+  $teal: #20c997;
+  $dark: $gray-800;
+  $enable-responsive-font-sizes: true;
+  $secondary: $gray-300;
+  $enable-hover-media-query: true;
+  $enable-shadows: true;
+  $link-decoration: none;
+
+  $body-bg: $gray-300;
+  $font-size-base: 1rem;
+
+  $teal: #20c997;
+  $primary: $blue;
+  $success: $green;
+  $info: $cyan;
+  $warning: $yellow;
+  $danger: $red;
+  $indigo-color: $indigo;
+  $teal-color: $teal;
+  $orange-color: $orange;
+
+  $font-family-sans-serif: Roboto, system-ui, -apple-system, "Segoe UI", "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  $min-contrast-ratio: 4.5; // default one
 }
 
 // fix for bootstrap 5.3
 $card-bg: #ffffff;
 $dropdown-bg: #ffffff;
 $table-bg: #ffffff;
+$list-group-bg: #ffffff;
 // end fix
 
 $alert-bg-scale: 0%;
