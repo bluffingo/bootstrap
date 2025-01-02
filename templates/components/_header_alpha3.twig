@@ -1,0 +1,79 @@
+<nav id="navbar"
+     class="navbar navbar-dark bg-poktube navbar-static-top navbar-expand-md"
+     style="margin-bottom:20px">
+    <div class="container">
+        <a class="navbar-brand" href="/">
+            <img src="{{ logo }}" alt="[sb]" height="24" class="d-inline-block align-text-top">
+            {# if youre on fulptube this is hella fucking cursed because at this point og fulptube still existed
+            or had just recently shutdown. -chaziz 1/2/2025 #}
+            {% if is_chaziz_sb and not is_fulptube %}
+                squareBracket <small>Alpha 3</small>
+            {% else %}
+                {{ website_branding.name }}
+            {% endif %}
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+                aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div id="navbarCollapse" class="collapse navbar-collapse">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a href="/" class="nav-link">
+                        {{ icon('house-door', 16) }} Home
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="browse.php" class="nav-link">
+                        {{ icon('play-btn', 16) }} Browse
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://github.com/bluffingo/OpenSB" class="nav-link">
+                        {{ icon('github', 16) }} GitHub
+                    </a>
+                </li>
+            </ul>
+            <ul class="navbar-nav">
+                {% if is_user_logged_in %}
+                    <div class="dropdown text-end">
+                        <a href="user.php?name={{ user_data.name }}"><img
+                                    src="{{ profile_picture(user_data.name) }}" alt="{{ user_data.name }}"
+                                    class="rounded" width="32" height="32" style="margin-top: 4px;"></a>
+                    </div>
+                    <li class="nav-item"><a href="user.php?name={{ user_data.name }}"
+                                            class="nav-link">{{ user_data.name }}</a></li>
+                    <div class="dropdown nav-item">
+                        <a href="#" class="nav-link dropdown-toggle"
+                           data-bs-toggle="dropdown" aria-expanded="false">
+                            Settings
+                        </a>
+                        <ul class="dropdown-menu text-small dropdown-menu-end" style="">
+                            <li><a class="dropdown-item" href="/settings">{{ icon('person-fill', 16) }} Profile
+                                    Settings</a></li>
+                            <li><a class="dropdown-item" id="themeSelect" href="/theme">{{ icon('palette', 16) }} Change
+                                    theme</a></li>
+                        </ul>
+                    </div>
+                    <li class="nav-item"><a href="/upload.php" class="nav-link">{{ icon('camera-video', 16) }}
+                            Upload</a></li>
+                    <li class="nav-item"><a href="logout.php" class="nav-link">Log Out</a></li>
+                {% else %}
+                    <div class="dropdown nav-item">
+                        <a href="#" class="nav-link dropdown-toggle"
+                           data-bs-toggle="dropdown" aria-expanded="false">
+                            Settings
+                        </a>
+                        <ul class="dropdown-menu text-small dropdown-menu-end" style="">
+                            <li><a class="dropdown-item" id="themeSelect" href="/theme">{{ icon('palette', 16) }} Change
+                                    theme</a></li>
+                        </ul>
+                    </div>
+                    <li class="nav-item"><a href="login.php" class="nav-link">Login</a></li>
+                    <li class="nav-item"><a href="register.php" class="nav-link">Register</a></li>
+                {% endif %}
+            </ul>
+        </div>
+        <!--/.nav-collapse -->
+    </div>
+</nav>

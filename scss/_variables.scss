@@ -26,9 +26,9 @@ $gray-800: #393939;
 $gray-900: #242424;
 $light: #f8f9fa;
 $dark: #343a40;
-$indigo-color:	$indigo;
-$teal-color:	$teal;
-$orange-color:	$orange;
+$indigo-color: $indigo;
+$teal-color: $teal;
+$orange-color: $orange;
 $secondary: $gray-200;
 $font-family-sans-serif: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 $font-size-base: 0.875rem;
@@ -40,6 +40,51 @@ $h5-font-size: $font-size-base * 1.25;
 $h6-font-size: $font-size-base;
 $input-bg: $white;
 $body-bg: #f0f0f0;
+$min-contrast-ratio: 1.50;
+
+// override colors with alpha 3 colors
+@if $theme == "alpha3" {
+  $white: #fff;
+  $gray-100: #e3e3e3;
+  $gray-200: #cfcfcf;
+  $gray-300: #c2c2c2;
+  $gray-400: #b8b8b8;
+  $gray-500: #969696;
+  $gray-600: #808080;
+  $gray-700: #666666;
+  $gray-800: #4f4f4f;
+  $gray-900: #303030;
+  $black: #000;
+  $indigo: #371cd4;
+  $purple: #523bb8;
+  $pink: #eb46a9;
+  $orange: #e6a417;
+  $yellow: #f5cc18;
+  $blue: #337ab7;
+  $poktube-blue: #0054B6;
+  $teal: #20c997;
+  $dark: $gray-800;
+  $enable-responsive-font-sizes: true;
+  $secondary: $gray-300;
+  $enable-hover-media-query: true;
+  $enable-shadows: true;
+  $link-decoration: none;
+  $font-family-sans-serif: Roboto, system-ui, -apple-system, "Segoe UI", "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  $body-bg: #e9eaec;
+  $font-size-base: 1rem;
+
+  $teal: #20c997;
+  $primary: $blue;
+  $success: $green;
+  $info: $cyan;
+  $warning: $yellow;
+  $danger: $red;
+  $indigo-color: $indigo;
+  $teal-color: $teal;
+  $orange-color: $orange;
+
+  $min-contrast-ratio: 4.5; // default one
+}
 
 // fix for bootstrap 5.3
 $card-bg: #ffffff;
@@ -54,38 +99,36 @@ $gradient: linear-gradient(180deg, rgba($white, .15), rgba($white, 0));
 $thumbnail-bg: $white;
 
 $container-max-widths: (
-  sm: 540px,
-  md: 720px,
-  lg: 960px,
-  xl: 1140px,
-  xxl: 1320px,
-  xxxl: 1500px
+        sm: 540px,
+        md: 720px,
+        lg: 960px,
+        xl: 1140px,
+        xxl: 1320px,
+        xxxl: 1500px
 );
 
 $grid-breakpoints: (
-  xs: 0,
-  sm: 576px,
-  md: 768px,
-  lg: 992px,
-  xl: 1200px,
-  xxl: 1400px,
-  xxxl: 1750px
+        xs: 0,
+        sm: 576px,
+        md: 768px,
+        lg: 992px,
+        xl: 1200px,
+        xxl: 1400px,
+        xxxl: 1750px
 );
-
 
 
 $theme-colors: (
-  "primary":    $primary,
-  "secondary":  $secondary,
-  "success":    $success,
-  "info":       $info,
-  "warning":    $warning,
-  "danger":     $danger,
-  "light":      $light,
-  "dark":       $dark,
-  "violet":     $indigo-color,
-  "pale-green": $teal-color,
-  "carrot": $orange-color,
+        "primary": $primary,
+        "secondary": $secondary,
+        "success": $success,
+        "info": $info,
+        "warning": $warning,
+        "danger": $danger,
+        "light": $light,
+        "dark": $dark,
+        "violet": $indigo-color,
+        "pale-green": $teal-color,
+        "carrot": $orange-color,
+        "poktube": $poktube-blue,
 );
-
-$min-contrast-ratio:   1.50 !default;

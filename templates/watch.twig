@@ -33,7 +33,7 @@
                                         </div>
                                         <div class="col-lg-10">
                                             {{ user_link(submission.author) }}<br>
-                                            <small>Uploaded on {{ submission.published | date('M j, Y') }}
+                                            <small>Uploaded on {{ submission.published | date('M j, Y') }} • {{ submission.interactions.views }} views
                                                 {% if submission.published_originally and submission.original_site %}
                                                     <br>First uploaded on {{ submission.original_site }} on {{ submission.published_originally | date('M j, Y') }}
                                                 {% elseif submission.original_site %}
@@ -111,19 +111,29 @@
                 </div>
             </div>
             <div class="col-lg-3">
-                {% if submission.recommended %}
-                    {% for submission in submission.recommended %}
-                        {{ include('/components/smallvideobox.twig') }}
-                    {% endfor %}
-                {% elseif submission.other_by_author %}
-                    {% for submission in submission.other_by_author %}
-                        {{ include('/components/smallvideobox.twig') }}
-                    {% endfor %}
-                {% elseif submission.random %}
-                    {% for submission in submission.random %}
-                        {{ include('/components/smallvideobox.twig') }}
-                    {% endfor %}
-                {% endif %}
+                {% if current_theme == "alpha3" %}
+                <div class="card">
+                    <div class="card-header">
+                        Recommended
+                    </div>
+                    <div class="card-body">
+                        {% endif %}
+                        {% if submission.recommended %}
+                            {% for submission in submission.recommended %}
+                                {{ include('/components/smallvideobox.twig') }}
+                            {% endfor %}
+                        {% elseif submission.other_by_author %}
+                            {% for submission in submission.other_by_author %}
+                                {{ include('/components/smallvideobox.twig') }}
+                            {% endfor %}
+                        {% elseif submission.random %}
+                            {% for submission in submission.random %}
+                                {{ include('/components/smallvideobox.twig') }}
+                            {% endfor %}
+                        {% endif %}
+                        {% if current_theme == "alpha3" %}
+                    </div>
+                    {% endif %}
             </div>
         </div>
     {% endblock %}

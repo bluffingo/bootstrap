@@ -4,6 +4,9 @@
 	{% block content %}
         <div class="row">
             <div class="col-xl-8">
+                {% if current_theme == "alpha3" %}
+                    <h3>New from {{ website_branding.name }}</h3>
+                {% else %}
                 <div class="row">
                     <div class="col-8">
                         <h3>Recently uploaded to {{ website_branding.name }}</h3>
@@ -13,6 +16,7 @@
                                                  class="btn btn-light btn-sm">Browse</a></div>
                     </div>
                 </div>
+                {% endif %}
                 {% for submission in data.submissions_new %}
                     {{ include('/components/videobox.twig') }}
                 {% else %}
@@ -21,33 +25,59 @@
             </div>
             <div class="col-xl-4">
                 {% if is_user_logged_in %}
-                    <div>
-                        <img class="float-start rounded-circle w-25 me-3" src="{{ profile_picture(user_data.name) }}"
-                             alt="{{ user_data.name }}">
-                        <div class="text-start float-start">
-                            <h3>{{ user_data.title }}</h3>
-                            {# hack to prevent twig from outputing the number 1 #}
-                            {% if user_stat_data.followers != 1 %}
-                                {% set pluralSubscribers = "s" %}
-                            {% endif %}
-                            {% if user_stat_data.views != 1 %}
-                                {% set pluralViews = "s" %}
-                            {% endif %}
-                            <p class="fs-5 mb-1">@{{ user_data.name }}</p>
-                            <p class="mb-2">{{ user_stat_data.followers ?? "no" }} subscriber{{ pluralSubscribers }}</p>
-                            <p class="mb-2">{{ user_stat_data.views ?? "no" }} view{{ pluralViews }}</p>
-                        </div>
-                    </div>
-                    <div class="clearfix"></div>
-                {% else %}
-                    <h3>Welcome to {{ website_branding.name }}</h3>
-                    {% if is_chaziz_sb %}
-                        <p>Your content, your narration, your niche on the web.</p>
+                    {# hack to prevent twig from outputing the number 1 #}
+                    {% if user_stat_data.followers != 1 %}
+                        {% set pluralSubscribers = "s" %}
                     {% endif %}
-                    <div class="btn-group my-auto w-100">
-                        <a href="/register" class="btn btn-primary">Register</a>
-                        <a href="/login" class="btn btn-secondary">Login</a>
-                    </div>
+                    {% if user_stat_data.views != 1 %}
+                        {% set pluralViews = "s" %}
+                    {% endif %}
+                    {% if current_theme == "alpha3" %}
+                        <div>
+                            <h3>Hi there, {{ user_data.name }}</h3>
+                            <img class="float-end rounded w-25" src="{{ profile_picture(user_data.name) }}" alt="pfp">
+                            <div class="text-start float-start">
+                                <p>You have {{ user_stat_data.followers ?? "no" }} subscriber{{ pluralSubscribers }}.</p>
+                                <p>You have {{ user_stat_data.views ?? "no" }} view{{ pluralViews }}.</p>
+                                <p>Your account was made {{ user_data.joined | relative_time }}.</p>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    {% else %}
+                        <div>
+                            <img class="float-start rounded-circle w-25 me-3"
+                                 src="{{ profile_picture(user_data.name) }}"
+                                 alt="{{ user_data.name }}">
+                            <div class="text-start float-start">
+                                <h3>{{ user_data.title }}</h3>
+                                <p class="fs-5 mb-1">@{{ user_data.name }}</p>
+                                <p class="mb-2">{{ user_stat_data.followers ?? "no" }}
+                                    subscriber{{ pluralSubscribers }}</p>
+                                <p class="mb-2">{{ user_stat_data.views ?? "no" }} view{{ pluralViews }}</p>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                    {% endif %}
+                {% else %}
+                    {% if current_theme == "alpha3" %}
+                        <h3>Welcome to {{ website_branding.name }}!</h3>
+                        {% if is_chaziz_sb %}
+                            <p>This is like any other video sharing site... for now at least.</p>
+                        {% endif %}
+                        <div class="btn-group">
+                            <a href="/register" class="btn btn-primary">Get started</a>
+                            <a href="/login" class="btn btn-light">Login</a>
+                        </div>
+                    {% else %}
+                        <h3>Welcome to {{ website_branding.name }}</h3>
+                        {% if is_chaziz_sb %}
+                            <p>I can't believe it's not PokTube</p>
+                        {% endif %}
+                        <div class="btn-group my-auto w-100">
+                            <a href="/register" class="btn btn-primary">Register</a>
+                            <a href="/login" class="btn btn-secondary">Login</a>
+                        </div>
+                    {% endif %}
                 {% endif %}
                 <hr/>
                 <h3>News and updates</h3>

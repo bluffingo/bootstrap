@@ -1,32 +1,41 @@
 {% if is_chaziz_sb %}
-	{% set logo = '/assets/sb_branding/bootstrap/logo_border_placeholder.png' %}
+    {% if is_fulptube %}
+        {% set logo = '/assets/sb_branding/fulp/vidshr.png' %}
+    {% else %}
+        {% if current_theme == "alpha3" %}
+            {% set logo = '/assets/sb_branding/bootstrap/logo-alpha3.png' %}
+        {% else %}
+            {% set logo = '/assets/sb_branding/bootstrap/logo_border_placeholder.png' %}
+        {% endif %}
+    {% endif %}
 {% else %}
-	{% set logo = website_branding.assets_location ~ '/logo.png' %}
+    {% set logo = website_branding.assets_location ~ '/logo.png' %}
 {% endif %}
 
 <!doctype html>
 <html lang="en" class="signin">
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	{% block head %}{% endblock %}
-	<link href="/assets/css/bootstrap.css?r={{ get_css_file_date() }}" rel="stylesheet" id="bootstrap">
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
-			integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
-			crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-	<script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-			integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-			crossorigin="anonymous"></script>
-	<script src="/assets/common_bootstrap.js"></script>
-	<script src="https://js.hcaptcha.com/1/api.js" async defer></script>
-	<script>
-		subscribe_string = 'Subscribe';
-		unsubscribe_string = 'Unsubscribe';
-	</script>
-	<meta name="theme-color" content="#0065d8">
-	<title>{% block title %}{% endblock %} - {{ website_branding.name }}</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% block head %}{% endblock %}
+    <link href="/assets/css/bootstrap-{{ current_theme }}.css?r={{ get_css_file_date() }}" rel="stylesheet"
+          id="bootstrap">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+            integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+            crossorigin="anonymous"></script>
+    <script src="/assets/common_bootstrap.js"></script>
+    <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
+    <script>
+        subscribe_string = 'Subscribe';
+        unsubscribe_string = 'Unsubscribe';
+    </script>
+    <meta name="theme-color" content="#0065d8">
+    <title>{% block title %}{% endblock %} - {{ website_branding.name }}</title>
 </head>
 <body class="text-center signin">
 {% block content %}{% endblock %}
