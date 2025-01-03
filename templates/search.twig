@@ -1,12 +1,16 @@
 {% extends "_layout.twig" %}
 
-{% block title %}Search Results for %s", [query]) }}{% endblock %}
+{% block title %}Search Results for {{ data.query }}{% endblock %}
 
 	{% block content %}
-        <h3>Search Results for %s", [query]) }}</h3>
-        {% for video in videos %}
-            {{ video_box(video) }}
+        <h3>Search Results for {{ data.query }}</h3>
+        {% for submission in data.submissions %}
+            {{ include('/components/videobox.twig') }}
         {% else %}
             <p>No search results found.</p>
         {% endfor %}
+
+        {% set le_url = 'search?query=' ~ data.query ~ '&page=%s' %}
+
+        {{ pagination(data.count, items_per_page, le_url, current_page) }}
     {% endblock %}
