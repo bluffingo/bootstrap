@@ -1,11 +1,11 @@
-{% set layout_template = current_theme == 'alpha3' ? '_layout.twig' : '_layout-login.twig' %}
+{% set layout_template = current_theme == 'alpha2' ? '_layout.twig' : '_layout-login.twig' %}
 
 {% extends layout_template %}
 
 {% block title %}Login{% endblock %}
 
 	{% block content %}
-        {% if current_theme == "alpha3" %}
+        {% if current_theme == "alpha2" %}
             <div class="row">
                 <div class="col-8">
                     {{ website_branding.name }} is a website to share your videos to the public. With {{ website_branding.name }} you can:
@@ -79,7 +79,7 @@
                             </div>
                         </div>
                         <p class="mt-2 text-white">Account passwords are hashed with bcrypt.</p>
-                        <p class="mt-5 mb-3 text-white">By OpenSB Contributors · 2021-{{ 'now' | date('Y') }}</p>
+                        <p class="mt-5 mb-3 text-white">© 2021-{{ 'now' | date('Y') }} OpenSB contributors.</p>
                     </div>
                 </form>
             </main>

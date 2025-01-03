@@ -1,11 +1,11 @@
-{% set layout_template = current_theme == 'alpha3' ? '_layout.twig' : '_layout-login.twig' %}
+{% set layout_template = current_theme == 'alpha2' ? '_layout.twig' : '_layout-login.twig' %}
 
 {% extends layout_template %}
 
 {% block title %}Register{% endblock %}
 
 	{% block content %}
-        {% if current_theme == "alpha3" %}
+        {% if current_theme == "alpha2" %}
             <h2>Register</h2>
             <form method="post" name="registerForm" id="registerForm" action="/register">
                 <div class="form-group">Username:
@@ -76,11 +76,9 @@
                                 </div>
                             </div>
                         </div>
-                        {#
                         <p class="mt-2 text-white"><b>You must be 13 years or older to register to
                                 {{ website_branding.name }}.</b> <br>Account passwords are hashed with bcrypt.</p>
-                        <p class="mt-5 mb-3 text-white">By OpenSB Contributors · 2021-{{ 'now' | date('Y') }}</p>
-                        #}
+                        <p class="mt-5 mb-3 text-white">© 2021-{{ 'now' | date('Y') }} OpenSB contributors.</p>
                     </form>
             </main>
         {% endif %}
