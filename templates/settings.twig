@@ -3,78 +3,175 @@
 {% block title %}Settings{% endblock %}
 
 {% block content %}
-    <form action="settings" method="post" enctype="multipart/form-data">
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">Profile</h5>
-                <div class="form-input">
-                    <label for="profilePicture" class="form-label">Profile picture:</label>
-                    <input type="file" name="profilePicture" id="profilePicture" class="form-control">
+    <h1>Settings</h1>
+
+    {% if error %}
+        <div class="alert alert-danger">{{ error }}</div>
+    {% endif %}
+
+    <div class="card">
+        <div class="card-body">
+            <form action="/settings" method="post" enctype="multipart/form-data">
+                <div class="mb-4">
+                    <h2 class="h5 mb-3">Profile</h2>
+
+                    <div class="mb-3">
+                        <label for="settings-display-name-input" class="form-label">Profile name:</label>
+                        <input class="form-control" id="settings-display-name-input" type="text" name="title" maxlength="50" value="{{ user_data.title }}">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="about" class="form-label">Profile description:</label>
+                        <textarea class="form-control" name="about" rows="4" wrap="hard">{{ user_data.about }}</textarea>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="setting-pfp" class="form-label">Profile picture:</label>
+                        <input type="file" name="profilePicture" id="setting-pfp" class="form-control">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="settings-banner" class="form-label">Profile banner:</label>
+                        <input type="file" name="profileBanner" id="settings-banner" class="form-control">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="settings-color" class="form-label">Username link color:</label>
+                        <input name="customcolor" id="settings-color" type="color" class="form-control form-control-color"
+                               value="{{ user_data.customcolor | default('#523bb8') }}">
+                    </div>
                 </div>
 
-                <div class="form-input">
-                    <label for="profilePicture" class="form-label">Profile banner (Biscuit frontend):</label>
-                    <input type="file" name="profileBanner" id="profileBanner" class="form-control">
+                <hr class="my-4">
+
+                <div class="mb-4">
+                    <h2 class="h5 mb-3">Profile colors</h2>
+                    <p class="text-muted mb-3">These will be shown to everyone on your profile (not on this frontend!).</p>
+
+                    <div class="form-check mb-3">
+                        <input class="form-check-input" type="checkbox" name="enable_customization" id="enable_customization" value="true">
+                        <label class="form-check-label" for="enable_customization">Enable profile customization</label>
+                    </div>
+
+                    <div class="alert alert-secondary mb-3">
+                        TODO: FONTS (which should be a dropdown menu with hardcoded options)
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="settings-title-color" class="form-label">Title color:</label>
+                        <input name="title_color" id="settings-title-color" type="color" class="form-control form-control-color"
+                               value="{{ profile_color_data.title_color | default('#333333') }}">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="settings-link-color" class="form-label">Link color:</label>
+                        <input name="link_color" id="settings-link-color" type="color" class="form-control form-control-color"
+                               value="{{ profile_color_data.link_color | default('#0033cc') }}">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="settings-basic-box-border-color" class="form-label">Basic box border color:</label>
+                        <input name="basic_box_border_color" id="settings-basic-box-border-color" type="color" class="form-control form-control-color"
+                               value="{{ profile_color_data.basic_box_border_color | default('#666666') }}">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="settings-basic-box-background-color" class="form-label">Basic box background color:</label>
+                        <input name="basic_box_background_color" id="settings-basic-box-background-color" type="color" class="form-control form-control-color"
+                               value="{{ profile_color_data.basic_box_background_color | default('#FFFFFF') }}">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="settings-basic-box-text-color" class="form-label">Basic box text color:</label>
+                        <input name="basic_box_text_color" id="settings-basic-box-text-color" type="color" class="form-control form-control-color"
+                               value="{{ profile_color_data.basic_box_text_color | default('#000000') }}">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="settings-highlight-box-border-color" class="form-label">Highlight box border color:</label>
+                        <input name="highlight_box_border_color" id="settings-highlight-box-border-color" type="color" class="form-control form-control-color"
+                               value="{{ profile_color_data.highlight_box_border_color | default('#666666') }}">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="settings-highlight-box-background-color" class="form-label">Highlight box background color:</label>
+                        <input name="highlight_box_background_color" id="settings-highlight-box-background-color" type="color" class="form-control form-control-color"
+                               value="{{ profile_color_data.highlight_box_background_color | default('#E6E6E6') }}">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="settings-highlight-box-text-color" class="form-label">Highlight box text color:</label>
+                        <input name="highlight_box_text_color" id="settings-highlight-box-text-color" type="color" class="form-control form-control-color"
+                               value="{{ profile_color_data.highlight_box_text_color | default('#000000') }}">
+                    </div>
                 </div>
 
-                <div class="form-input">
-                    <label for="title" class="form-label">Profile name:</label>
-                    <input class="form-control" type="text" name="title" size="45" maxlength="50"
-                           value="{{ user_data.title }}">
+                <hr class="my-4">
+
+                <div class="mb-4">
+                    <h2 class="h5 mb-3">Security</h2>
+
+                    <div class="mb-3">
+                        <label for="current_pass" class="form-label">Current password:</label>
+                        <input class="form-control" type="password" name="current_pass" size="30" maxlength="256"
+                               placeholder="Current password">
+                    </div>
+
+                    <h3 class="h6 mt-4 mb-3">Change username</h3>
+                    <div class="mb-3">
+                        <label for="new_username" class="form-label">New username:</label>
+                        <input class="form-control" type="text" name="new_username" size="30" maxlength="256"
+                               placeholder="New username">
+                    </div>
+
+                    <h3 class="h6 mt-4 mb-3">Change password</h3>
+                    <div class="mb-3">
+                        <label for="pass" class="form-label">New password:</label>
+                        <input class="form-control" type="password" name="pass" size="30" maxlength="256" placeholder="New password">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="pass2" class="form-label">Confirm new password:</label>
+                        <input class="form-control" type="password" name="pass2" size="30" maxlength="256"
+                               placeholder="Confirm new password">
+                    </div>
                 </div>
 
-                <div class="form-input">
-                    <label for="about" class="form-label">Profile description:</label>
-                    <textarea class="form-control" name="about" rows="5" cols="80"
-                              wrap="virtual">{{ user_data.about }}</textarea>
+                <hr class="my-4">
+
+                <div class="mb-4">
+                    <h2 class="h5 mb-3">Filtering</h2>
+
+                    {% if not is_chaziz_sb %}
+                        {% if isUserOver18 %}
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="checkbox" name="rating" id="rating" value="true"
+                                       {% if user_data.comfortable_rating == "mature" %}checked{% endif %}>
+                                <label class="form-check-label" for="rating"> {% if is_opensb_v1_3 %}Enable adult content{% else %}Enable sensitive content{% endif %}</label>
+                            </div>
+
+                            <div class="form-check mb-3">
+                                <input class="form-check-input" type="checkbox" name="rating" id="rating" value="true">
+                                <label class="form-check-label" for="rating"> Block profile/upload access from people under 18</label>
+                            </div>
+                        {% else %}
+                            <div class="alert alert-danger">
+                                Based on your account's birthdate, access to mature-rated content is restricted.
+                                If you entered an incorrect birthdate, please contact {{ website_branding.name }}
+                                administration.
+                            </div>
+                        {% endif %}
+                    {% endif %}
+
+                    <h3 class="h6 mb-3">Blocked tags</h3>
+                    <textarea class="form-control" name="blacklisted_tags" rows="5" cols="80" wrap="hard">{% for tag in user_data.blacklisted_tags %}{{ tag }},{% endfor %}</textarea>
                 </div>
 
-                <div class="form-input">
-                    <label class="form-label" for="customcolor">Username color:</label>
-                    <input class="form-control" name="customcolor" type="color" value="{{ user_data.customcolor | default('523bb8') }}">
+                <div class="text-end">
+                    <input type="submit" id="upload" name="save" class="btn btn-primary"
+                           value="Save">
                 </div>
-            </div>
+            </form>
         </div>
-        <br>
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">Security</h5>
-                <div class="form-input">
-                    <label for="current_pass" class="form-label">Current password:</label>
-                    <input class="form-control" type="password" name="current_pass" size="30" maxlength="256"
-                           placeholder="Current password"><br>
-                </div>
-
-                <div class="form-input">
-                    <label for="pass" class="form-label">New password:</label>
-                    <input class="form-control" type="password" name="pass" size="30" maxlength="256"
-                           placeholder="New password"><br>
-                </div>
-
-                <div class="form-input">
-                    <label for="pass2" class="form-label">Confirm new password:</label>
-                    <input class="form-control" type="password" name="pass2" size="30" maxlength="256"
-                           placeholder="Confirm new password">
-                </div>
-            </div>
-        </div>
-        <br>
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">Filtering</h5>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="rating" id="rating" value="true" {% if user_data.comfortable_rating == "mature" %}checked{% endif %}>
-                    <label class="form-check-label" for="rating"> Enable sensitive content</label><br>
-                </div>
-                <hr>
-                <h6>Blacklisted tags</h6>
-                <textarea class="form-control" name="blacklisted_tags" rows="5" cols="80" wrap="hard">{% for tag in user_data.blacklisted_tags %}{{ tag }},{% endfor %}</textarea>
-            </div>
-        </div>
-        <br>
-        <div class="text-end">
-            <input type="submit" id="upload" name="save" class="btn btn-primary"
-                   value="Save changes">
-        </div>
-    </form>
+    </div>
 {% endblock %}
