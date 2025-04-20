@@ -1,0 +1,18 @@
+<div class="card mb-2">
+    <div class="card-body">
+        <div class="content-info">
+            <div class="content-title">
+                <h5>
+                    <a href="/read?j={{ journal.id }}">
+                        {{ journal.title }}
+                    </a>
+                </h5>
+            </div>
+            <div class="content-description">
+                By {{ user_link(journal.author) }} • {{ journal.published | relative_time }}
+                <br>
+                {{ journal.contents|u.truncate(300, '...') }}
+            </div>
+        </div>
+    </div>
+</div>

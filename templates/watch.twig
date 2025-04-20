@@ -116,16 +116,34 @@
                                         <p>This upload has no description.</p>
                                     {% endif %}
                                 </div>
-                                <hr class="mt-2 mb-3"/>
-                                <div>
-                                    <small>
+                                <hr class="mt-3 mb-3"/>
+                                {% if submission.tags %}
+                                    Tags:
+                                    {% for tag in submission.tags %}
+                                        <a href="/search?query={{ tag.name }}">{{ tag.name }}</a>{{ not loop.last ? ',' }}
+                                    {% endfor %}
+                                {% endif %}
+                                <hr class="mt-3 mb-3"/>
+                                <div class="small">
+                                    <span>
+                                        Type:
+                                    {% if submission.type == 2 %}
+                                        Image
+                                    {% elseif submission.type == 3 %}
+                                        Music
+                                    {% else %}
+                                        Video
+                                    {% endif %}
+                                    </span>
+                                    •
+                                    <span>
                                         Rating:
-                                        {% if submission.rating == 'mature' %}
-                                            Sensitive
-                                        {% else %}
-                                            General
-                                        {% endif %}
-                                    </small>
+                                    {% if submission.rating == 'mature' %}
+                                        Mature
+                                    {% else %}
+                                        General
+                                    {% endif %}
+                                    </span>
                                 </div>
                             {% endif %}
                         </div>
