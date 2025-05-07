@@ -3,10 +3,6 @@ $theme: "default";
 // google fonts inter is outdated
 @import url('https://rsms.me/inter/inter.css');
 
-// bootstrap icons
-$bootstrap-icons-font-dir: "/assets" !default;
-@import "../../../../vendor/twbs/bootstrap-icons/font/bootstrap-icons.scss";
-
 // custom variables
 @import "variables";
 

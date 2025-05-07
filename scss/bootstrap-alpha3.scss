@@ -2,10 +2,6 @@ $theme: "alpha3";
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto');
 
-// bootstrap icons
-$bootstrap-icons-font-dir: "/assets" !default;
-@import "../../../../vendor/twbs/bootstrap-icons/font/bootstrap-icons.scss";
-
 // custom variables
 @import "variables";
 
