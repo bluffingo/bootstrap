@@ -62,7 +62,7 @@
                 {% endif %}
                 <div class="btn-group">
                     <a href="/register" class="btn btn-primary">Get started</a>
-                    <a href="/login" class="btn btn-light">Login</a>
+                    <a href="/login" class="btn btn-light">{{ localize('login') }}</a>
                 </div>
             {% else %}
                 <h3>Welcome to {{ website_branding.name }}</h3>
@@ -70,8 +70,8 @@
                     <p>I can't believe it's not PokTube</p>
                 {% endif %}
                 <div class="btn-group my-auto w-100">
-                    <a href="/register" class="btn btn-primary">Register</a>
-                    <a href="/login" class="btn btn-secondary">Login</a>
+                    <a href="/register" class="btn btn-primary">{{ localize('register') }}</a>
+                    <a href="/login" class="btn btn-secondary">{{ localize('login') }}</a>
                 </div>
             {% endif %}
         {% endif %}

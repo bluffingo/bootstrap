@@ -6,7 +6,7 @@
 
 	{% block content %}
         {% if current_theme == "alpha2" %}
-            <h2>Register</h2>
+            <h2>{{ localize('register') }}</h2>
             <form method="post" name="registerForm" id="registerForm" action="/register">
                 <div class="form-group">Username:
                     <input type="text" name="username" class="form-control" placeholder="Username" required>
@@ -36,7 +36,7 @@
                 <form method="post" name="registerForm" id="registerForm" action="/register">
                     <img class="mb-2" src="{{ logo }}" alt="{{ website_branding.name }}"
                          width="90">
-                    <h3 class="mb-4 text-white">Register</h3>
+                    <h3 class="mb-4 text-white">{{ localize('register') }}</h3>
                     <form method="POST">
                         <div class="card">
                             <div class="card-body">
