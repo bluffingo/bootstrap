@@ -62,7 +62,7 @@
             <h5>
                 {{ news.title }}
             </h5>
-            {{ news.contents | markdown_user_journal }}
+            {{ news.contents | markdown_user_written(true) }}
             <p class="blockquote-footer">{{ news.author.info.username }}</p>
         {% endfor %}
     </div>
