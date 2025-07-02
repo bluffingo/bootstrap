@@ -44,10 +44,8 @@
 {% endif %}
 {% if current_theme == "default" %}
     {{ include('/components/_header_default.twig') }}
-{% elseif current_theme == "alpha3" %}
-    {{ include('/components/_header_alpha3.twig') }}
-{% elseif current_theme == "alpha2" %}
-    {{ include('/components/_header_alpha2.twig') }}
+{% elseif current_theme == "classic" %}
+    {{ include('/components/_header_classic.twig') }}
 {% else %}
     insert header here
 {% endif %}
@@ -61,13 +59,8 @@
         {{ remove_notification() }}
     {% endif %}
     {% block content %}{% endblock %}
-    {% if current_theme == "alpha3" %}
-        {{ include('/components/_footer_alpha3.twig') }}
-    {% endif %}
 </div>
-{% if current_theme == "default" %}
-    {{ include('/components/_footer_default.twig') }}
-{% endif %}
+{{ include('/components/_footer_default.twig') }}
 {% block postcontent %}{% endblock %}
 {% block scripts %}{% endblock %}
 {% if is_debug %}
