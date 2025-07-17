@@ -78,7 +78,7 @@
                         </div>
                         <p class="mt-2 text-white"><b>You must be 13 years or older to register to
                                 {{ website_branding.name }}.</b> <br>Account passwords are hashed with bcrypt.</p>
-                        <p class="mt-5 mb-3 text-white">© 2021-{{ 'now' | date('Y') }} OpenSB contributors.</p>
+                        <p class="mt-5 mb-3 text-white">{{ localize('footer_copyright', ('now' | date('Y'))) }}.</p>
                     </form>
             </main>
         {% endif %}
