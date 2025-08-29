@@ -1,23 +1,23 @@
 {
-  "metadata": {
-    "id": "bootstrap",
-    "name": "Bootstrap",
-    "author": "OpenSB developers",
-    "description": "The 2021 SquareBracket user experience.",
-    "site": "squarebracket",
-    "themes": [
-      {
-        "id": "default",
-        "name": "Default",
-        "description": "The classic 2021 SquareBracket user experience.",
-        "author": "OpenSB developers"
-      },
-      {
-        "id": "classic",
-        "name": "Classic",
-        "description": "Emulates the version of SquareBracket from 2021.",
-        "author": "OpenSB developers"
-      }
-    ]
-  }
+    "metadata": {
+        "id": "bootstrap",
+        "name": "Bootstrap",
+        "author": "OpenSB developers",
+        "description": "The 2021 SquareBracket user experience.",
+        "site": "squarebracket",
+        "themes": [
+            {
+                "id": "default",
+                "name": "Default",
+                "description": "The classic 2021 SquareBracket user experience.",
+                "author": "OpenSB developers"
+            },
+            {
+                "id": "classic",
+                "name": "Classic",
+                "description": "Emulates the version of SquareBracket from 2021.",
+                "author": "OpenSB developers"
+            }
+        ]
+    }
 }
