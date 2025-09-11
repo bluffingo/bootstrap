@@ -36,75 +36,9 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="settings-color" class="form-label">Username link color:</label>
+                        <label for="settings-color" class="form-label">Profile color:</label>
                         <input name="customcolor" id="settings-color" type="color" class="form-control form-control-color"
                                value="{{ user_data.customcolor | default('#523bb8') }}">
-                    </div>
-                </div>
-
-                <hr class="my-4">
-
-                <div class="mb-4">
-                    <h2 class="h5 mb-3">Profile colors</h2>
-                    <p class="text-muted mb-3">These will be shown to everyone on your profile (not on this frontend!).</p>
-
-                    <div class="form-check mb-3">
-                        <input class="form-check-input" type="checkbox" name="enable_customization"
-                               id="enable_customization" value="true"
-                               {% if flags.profile_customization_enabled %}checked{% endif %}>>
-                        <label class="form-check-label" for="enable_customization">Enable profile customization</label>
-                    </div>
-
-                    <div class="alert alert-secondary mb-3">
-                        TODO: FONTS (which should be a dropdown menu with hardcoded options)
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="settings-title-color" class="form-label">Title color:</label>
-                        <input name="title_color" id="settings-title-color" type="color" class="form-control form-control-color"
-                               value="{{ profile_color_data.title_color | default('#333333') }}">
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="settings-link-color" class="form-label">Link color:</label>
-                        <input name="link_color" id="settings-link-color" type="color" class="form-control form-control-color"
-                               value="{{ profile_color_data.link_color | default('#0033cc') }}">
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="settings-basic-box-border-color" class="form-label">Basic box border color:</label>
-                        <input name="basic_box_border_color" id="settings-basic-box-border-color" type="color" class="form-control form-control-color"
-                               value="{{ profile_color_data.basic_box_border_color | default('#666666') }}">
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="settings-basic-box-background-color" class="form-label">Basic box background color:</label>
-                        <input name="basic_box_background_color" id="settings-basic-box-background-color" type="color" class="form-control form-control-color"
-                               value="{{ profile_color_data.basic_box_background_color | default('#FFFFFF') }}">
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="settings-basic-box-text-color" class="form-label">Basic box text color:</label>
-                        <input name="basic_box_text_color" id="settings-basic-box-text-color" type="color" class="form-control form-control-color"
-                               value="{{ profile_color_data.basic_box_text_color | default('#000000') }}">
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="settings-highlight-box-border-color" class="form-label">Highlight box border color:</label>
-                        <input name="highlight_box_border_color" id="settings-highlight-box-border-color" type="color" class="form-control form-control-color"
-                               value="{{ profile_color_data.highlight_box_border_color | default('#666666') }}">
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="settings-highlight-box-background-color" class="form-label">Highlight box background color:</label>
-                        <input name="highlight_box_background_color" id="settings-highlight-box-background-color" type="color" class="form-control form-control-color"
-                               value="{{ profile_color_data.highlight_box_background_color | default('#E6E6E6') }}">
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="settings-highlight-box-text-color" class="form-label">Highlight box text color:</label>
-                        <input name="highlight_box_text_color" id="settings-highlight-box-text-color" type="color" class="form-control form-control-color"
-                               value="{{ profile_color_data.highlight_box_text_color | default('#000000') }}">
                     </div>
                 </div>
 
