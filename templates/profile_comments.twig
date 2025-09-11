@@ -1,0 +1,16 @@
+{% extends "_layout-profile.twig" %}
+
+{% block title %}{{ data.username }}{% endblock %}
+
+{% set selected_tab = "comments" %}
+
+    {% block content %}
+        <div class="card mb-2">
+            <div class="card-body">
+                <h3>{{ localize('comments') }}</h3>
+                {% for comment in data.comments %}
+                    {{ include('/components/comment.twig') }}
+                {% endfor %}
+            </div>
+        </div>
+    {% endblock %}

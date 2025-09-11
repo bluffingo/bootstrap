@@ -1,0 +1,18 @@
+{% extends "_layout-profile.twig" %}
+
+{% block title %}{{ data.username }}{% endblock %}
+
+{% set selected_tab = "journals" %}
+
+    {% block content %}
+        <div class="card mb-2">
+            <div class="card-body">
+                <h3>{{ localize('journals') }}</h3>
+                {% for journal in journals %}
+                    {{ include('/components/journal.twig') }}
+                {% else %}
+                    <p>There are currently no journals by {{ data.username }}.</p>
+                {% endfor %}
+            </div>
+        </div>
+    {% endblock %}

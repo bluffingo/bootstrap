@@ -1,88 +1,11 @@
-{% extends "_layout.twig" %}
+{% extends "_layout-profile.twig" %}
 
 {% block title %}{{ data.username }}{% endblock %}
 
-    {% block head %}
-        <script>
-            user_id = '{{ data.id }}';
-        </script>
-    {% endblock %}
-
-    {% block precontent %}
-        <style>
-            {{ data.bootstrap_profile_css }}
-
-            .bg-channel-background {
-                margin-top: -1.5rem; /* KINDA UGLY */
-            }
-        </style>
-        {% if current_theme == "classic" %}
-            <div class="bg-channel-background">
-                <div class="col-12 mb-2 mt-0">
-                    <div class="p-1 bg-custom-profile text-white">
-                        <div class="container py-4">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <img class="float-start rounded-circle me-3"
-                                            src="{{ profile_picture(data.username) }}"
-                                            width="150" alt="pfp">
-                                    <h1 class="align-top fw-bold mb-0">
-                                        {{ data.displayname }}
-                                        {% if data.is_staff %}{{ icon("shield", 32) }}{% endif %}
-                                    </h1>
-                                    <div class="fs-4">@{{ data.username }}</div>
-                                    <p class="fs-6 text-break">{{ data.about }}</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        {% else %}
-            <div class="bg-channel-background mb-0">
-                <div class="bg-custom-profile text-white py-4">
-                    <div class="container">
-                        <div class="d-flex align-items-center">
-                            <img class="rounded-circle me-3 flex-shrink-0" 
-                                src="{{ profile_picture(data.username) }}" 
-                                width="90"
-                                alt="Profile picture">
-                            
-                            <div class="flex-grow-1">
-                                <h1 class="fw-bold mb-1">
-                                    {{ data.displayname }}
-                                    {% if data.is_staff %}{{ icon("shield", 32) }}{% endif %}
-                                </h1>
-                                <div class="fs-4 text-white-50 mb-2">@{{ data.username }}</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="mb-3 py-2 bg-light border">
-                <div class="d-flex justify-content-center">
-                    <ul class="nav nav-pills">
-                        <li class="nav-item">
-                            <a class="nav-link active" href="/user/{{ data.displayname }}">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/user/{{ data.displayname }}/uploads">Uploads</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/user/{{ data.displayname }}/journals">Journals</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/user/{{ data.displayname }}/comments">Comments</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        {% endif %}
-    {% endblock %}
+{% set selected_tab = "home" %}
 
     {% block content %}
     <div class="row">
-        <!-- This prevents the user info box from being extremely tall. Box probably needs to be redesigned... -->
         <div class="col-md-8 order-2 order-md-1">
             <div class="card mb-2">
                 <div class="card-body">
@@ -96,6 +19,14 @@
             </div>
         </div>
         <div class="col-md-4 order-1 order-md-2">
+            {# brickface profile navigation
+            <ul class="list-group mb-2">
+                <li class="list-group-item active" aria-current="true">Home</li>
+                <li class="list-group-item">Uploads</li>
+                <li class="list-group-item">Journals</li>
+                <li class="list-group-item">Comments</li>
+            </ul>
+            #}
             <div class="card mb-2">
                 <div class="card-body">
                     <h4>About {{ data.username }}</h4>
