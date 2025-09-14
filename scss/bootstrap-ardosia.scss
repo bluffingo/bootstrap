@@ -1,0 +1,564 @@
+$theme: "ardosia";
+
+// google fonts inter is outdated
+@import url('https://rsms.me/inter/inter.css');
+
+// custom variables
+@import "variables";
+
+// bootstrap
+@import "../../../../vendor/twbs/bootstrap/scss/bootstrap.scss";
+
+// custom stuff
+@import "custom";
+
+// login page (from bootstrap docs iirc?)
+@import 'signin';
+
+// ardosia stylesheets, TODO!
+* {
+    font-family: Segoe UI, "Selawik", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+}
+
+body {
+    font-family: Segoe UI, "Selawik", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    font-size: 14px;
+    color: hsl(210, 12%, 16%);
+    background-color: white;
+}
+
+a {
+    color: hsl(212, 97%, 43%);
+    text-decoration: none;
+}
+
+a:hover {
+    color: rgb(0, 186, 255);
+    text-decoration: underline;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+    font-family: Segoe UI, "Selawik", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+}
+
+h1,
+.h1,
+h2,
+.h2,
+h4,
+.h4,
+h5,
+.h5,
+h6,
+.h6 {
+    font-weight: 400;
+    line-height: 1.0;
+}
+
+h3,
+.h3 {
+    font-size: 26px;
+}
+
+p {
+    font-size: 14px;
+    color: hsl(210, 12%, 16%);
+}
+
+hr {
+    margin: 10px !important;
+    color: hsl(214, 14%, 90%);
+    opacity: 1;
+}
+
+.rounded-circle {
+    border-radius: 2px !important;
+}
+
+img {
+    border-radius: 2px !important;
+}
+
+.form-control {
+    background-color: hsl(210, 18%, 93%);
+    border: 1px solid hsl(214, 14%, 85%);
+    border-radius: 2px;
+    font-size: 12px;
+    padding: 5px 10px 5px 10px;
+    transition-duration: 0s;
+}
+
+
+.form-control:focus {
+    background-color: hsl(210, 18%, 93%);
+    border: 1px solid hsl(212, 97%, 43%);
+    box-shadow: 0 0 0 2px hsla(212, 97%, 43%, .25);
+}
+
+.input-group-text {
+    background: hsl(210, 18%, 93%);
+    border-radius: 2px;
+    border: 1px solid hsl(214, 14%, 85%);
+    font-size: 14px;
+    padding: 0 10px 0 10px;
+}
+
+.navbar {
+    padding: 3px 0 5px 0;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    text-decoration: none;
+}
+
+/*
+.bi {
+    vertical-align: -2px;
+}
+*/
+
+.bg-dark {
+    background-color: hsl(210, 12%, 14%);
+    background-image: linear-gradient(hsl(210, 12%, 14%), hsl(210, 12%, 14%));
+}
+
+.bg-light {
+    background-color: white;
+    background-image: linear-gradient(white, white);
+}
+
+.bg-purple {
+    background-image: linear-gradient(hsl(210, 18%, 93%), hsl(210, 18%, 93%));
+    box-shadow: inset 0 -1px 0 0 hsl(214, 14%, 90%);
+}
+
+.p-5 {
+    padding: 1.5rem !important;
+}
+
+.text-white {
+    color: hsl(210, 12%, 16%) !important;
+}
+
+.fw-bold {
+    font-weight: 300 !important;
+}
+
+.fs-4 {
+    font-size: 1rem !important;
+}
+
+.btn {
+    border: none;
+    cursor: default;
+    font-size: 14px;
+    border-radius: 2px;
+}
+
+.btn:hover {
+    box-shadow: inset 0 0 0 100px hsla(0, 0%, 100%, .1);
+}
+
+.btn-primary {
+    background: hsl(212, 97%, 43%);
+    border: 1px solid hsl(212, 97%, 43%);
+    border-radius: 2px;
+    cursor: default;
+    transition-duration: 0s;
+}
+
+.btn-primary:hover {
+    background: hsl(212, 97%, 43%);
+    border: 1px solid hsl(212, 97%, 43%);
+    box-shadow: inset 0 0 0 100px hsla(0, 0%, 100%, .1);
+    transition-duration: 0s;
+    text-decoration: underline;
+}
+
+.btn-primary:active,
+.btn-primary.active {
+    background-color: hsl(212, 97%, 43%);
+    border: 1px solid hsl(212, 97%, 43%);
+}
+
+.btn-check:focus+.btn-primary,
+.btn-primary:focus {
+    color: #fff;
+    background-color: hsl(212, 97%, 43%);
+    border: 1px solid hsl(212, 97%, 43%);
+    box-shadow: 0 0 0 2px hsla(212, 97%, 43%, .25);
+}
+
+.btn-secondary {
+    background-image: linear-gradient(hsl(210, 22%, 96%), hsl(210, 22%, 96%));
+    background-color: hsl(210, 29%, 97%);
+    border: 1px solid hsl(214, 14%, 90%);
+    border-radius: 2px;
+    color: black;
+    cursor: default;
+    transition-duration: 0s;
+}
+
+.btn-secondary:hover {
+    background-image: linear-gradient(white, white);
+    background-color: hsl(210, 20%, 98%);
+    border: 1px solid hsl(213, 11%, 84%);
+    color: hsl(0, 0%, 0%);
+    text-decoration: underline;
+}
+
+.btn-secondary:focus {
+    color: black;
+    background-image: linear-gradient(white, white);
+    box-shadow: 0 0 0 2px hsla(0, 0%, 0%, .05) !important;
+    border: 1px solid hsl(213, 11%, 84%);
+}
+
+.btn-secondary:active,
+.btn-secondary.active {
+    color: black !important;
+    background-color: white;
+    box-shadow: 0 0 0 2px hsla(0, 0%, 0%, .05);
+    border: 1px solid hsl(213, 11%, 84%) !important;
+}
+
+.btn-check:checked+.btn-primary:focus,
+.btn-check:active+.btn-primary:focus,
+.btn-primary:active:focus,
+.btn-primary.active:focus,
+.show>.btn-primary.dropdown-toggle:focus {
+    background: hsl(212, 97%, 43%);
+    box-shadow: 0 0 0 2px hsla(212, 97%, 43%, .25), inset 0 0 0 100px hsla(0, 0%, 100%, .1);
+}
+
+.btn-light {
+    background-image: linear-gradient(hsl(210, 22%, 96%), hsl(210, 22%, 96%));
+    background-color: hsl(210, 29%, 97%);
+    border: 1px solid hsl(214, 14%, 90%);
+    color: black;
+    cursor: default;
+    transition-duration: 0s;
+}
+
+.btn-light:hover {
+    background-image: linear-gradient(white, white);
+    background-color: hsl(210, 20%, 98%);
+    border: 1px solid hsl(213, 11%, 84%);
+    color: hsl(0, 0%, 0%);
+    text-decoration: underline;
+}
+
+.btn-light:focus {
+    background-image: linear-gradient(white, white);
+    box-shadow: 0 0 0 2px hsla(0, 0%, 0%, .05) !important;
+    outline: none;
+}
+
+.btn-danger {
+    background-image: linear-gradient(to bottom, hsl(16, 82%, 52%), hsl(16, 82%, 52%));
+    transition-duration: 0s;
+}
+
+.btn-danger:hover {
+    background-image: linear-gradient(to bottom, hsl(16, 82%, 52%), hsl(16, 82%, 52%));
+    transition-duration: 0s;
+}
+
+.btn-danger:focus {
+    box-shadow: 0 0 0 3px hsla(212, 97%, 43%, .25), 0 0 0 1px hsl(212, 97%, 43%);
+    transition: 0s;
+}
+
+.btn-success {
+    background-image: linear-gradient(to bottom, hsl(120, 59%, 40%), hsl(175, 59%, 40%));
+    transition: 0s;
+}
+
+.btn-success:hover {
+    background-image: linear-gradient(to bottom, hsl(120, 59%, 40%), hsl(175, 59%, 40%));
+    transition: 0s;
+}
+
+.btn-success:focus {
+    background-image: linear-gradient(to bottom, hsl(120, 59%, 40%), hsl(175, 59%, 40%));
+    box-shadow: 0 0 0 3px hsla(212, 97%, 43%, .25), 0 0 0 1px hsl(212, 97%, 43%);
+    transition: 0s;
+}
+
+.btn-close:focus {
+    box-shadow: 0 0 0 3px hsla(212, 97%, 43%, .25), 0 0 0 1px hsl(212, 97%, 43%)
+}
+
+button:not(:disabled),
+[type="button"]:not(:disabled),
+[type="reset"]:not(:disabled),
+[type="submit"]:not(:disabled) {
+    cursor: default;
+}
+
+.btn-group>.btn:not(:last-child):not(.dropdown-toggle),
+.btn-group>.btn-group:not(:last-child)>.btn {
+    padding: 5px 15px 0px 15px;
+    border-radius: 2px;
+}
+
+.card-body {
+    padding: 10px 10px 10px 10px;
+    color: hsl(210, 12%, 16%);
+    box-shadow: 0 0 0 1px hsl(214, 13%, 90%);
+}
+
+.card {
+    background-color: rgba(255, 255, 255, .7);
+    border: 1px solid hsl(214, 14%, 90%);
+    border-radius: 2px;
+}
+
+.text-end {
+    margin: 0 0 5px 0;
+}
+
+.img-thumbnail {
+    padding: 0;
+    background-color: white;
+    border: 0px solid white;
+    border-radius: 0;
+}
+
+.rounded-start {
+    border-bottom-left-radius: 0px !important;
+    border-top-left-radius: 0px !important;
+}
+
+.rounded-end {
+    border-top-right-radius: 0px !important;
+    border-bottom-right-radius: 0px !important;
+}
+
+.badge {
+    font-weight: 400 !important;
+    border-radius: 1px;
+}
+
+.btn-lg,
+.btn-group-lg>.btn {
+    padding: 5px 15px;
+    font-size: 14px;
+    border-radius: 2px;
+    cursor: default;
+    transition-duration: 0s;
+}
+
+.btn-sm,
+.btn-group-sm>.btn {
+    border-radius: 2px;
+}
+
+.nav-pills .nav-link.active,
+.nav-pills .show>.nav-link {
+    background-color: hsl(212, 97%, 43%);
+}
+
+.nav-pills .nav-link {
+    color: hsl(212, 97%, 43%);
+    border-radius: 2px;
+    cursor: default;
+    transition-duration: 0s;
+}
+
+.nav-link {
+    cursor: default;
+}
+
+.nav-link:hover,
+.nav-link:focus {
+    color: hsl(196, 100%, 50%);
+}
+
+.bg-custom-profile {
+    backdrop-filter: blur(10px) !important;
+    background-image: linear-gradient(hsl(210, 0%, 100%) 0%, hsla(210, 0%, 100%, .2) 100%) !important;
+    border: none !important;
+    box-shadow: inset 0 -1px 0 0 hsla(0, 0%, 100%, .35),
+        0 0 3px 1px hsla(0, 0%, 0%, .5) !important;
+    /* color: white !important; */
+}
+
+.text-break {
+    text-shadow: 0 0 3px hsla(0, 0%, 100%, .7);
+}
+
+
+
+.mb-2 {
+    margin-bottom: 1rem !important;
+}
+
+div.card.card-content {
+    display: none !important;
+}
+
+.alert {
+    border-radius: 2px;
+}
+
+.alert-primary {
+    color: white;
+    background-color: hsl(212, 97%, 43%);
+    border: 1px solid hsl(212, 97%, 43%);
+}
+
+.list-group-item {
+    background-color: hsl(210, 22%, 96%);
+    border: 1px solid hsl(214, 14%, 90%);
+    color: black;
+    cursor: default;
+}
+
+.list-group-item.active {
+    color: white;
+    background-color: hsl(212, 97%, 43%);
+    border: 1px solid hsl(212, 97%, 43%);
+}
+
+.dropdown-menu {
+    background-color: #fff;
+    border: 1px solid hsla(0, 0%, 0%, .2);
+    border-radius: 2px;
+    color: hsl(0, 0%, 14%);
+    font-size: 14px;
+    padding: 5px 0 5px 0;
+    transition: 0.3s;
+}
+
+.dropdown-menu:hover {
+    box-shadow: 0 5px 15px 0 hsla(0, 0%, 0%, .2);
+    transition: 0.3s;
+}
+
+.dropdown-item:hover {
+    cursor: default;
+}
+
+.dropdown-item:focus {
+    color: white;
+    background-color: hsl(0, 0%, 93%)
+}
+
+.dropdown-item.active,
+.dropdown-item:active {
+    color: white;
+    text-decoration: none;
+    background-color: hsl(212, 97%, 43%);
+}
+
+.dropdown-divider {
+    height: 0;
+    margin: 0px !important;
+    overflow: hidden;
+    border-top: 1px solid hsl(214, 15%, 90%);
+}
+
+.form-check-input:checked {
+    background-color: hsl(212, 97%, 43%);
+    border: 1px solid hsl(212, 97%, 43%);
+    transition: 0s;
+}
+
+.form-check-input:focus {
+    border: 1px solid hsl(212, 97%, 43%);
+    outline: 0;
+    box-shadow: 0 0 0 2px hsla(212, 97%, 43%, .25);
+    transition: 0s;
+}
+
+.form-check-input:active {
+    filter: none;
+}
+
+.half .contents {
+    background: hsl(210, 29%, 97%);
+}
+
+.half .bg {
+    box-shadow: 0 6px 12px hsla(0, 0%, 0%, .35)
+}
+
+.half .contents .form-control,
+.half .bg .form-control {
+    border: 1px solid hsl(214, 13%, 90%);
+    box-shadow: none;
+    border-radius: 2px;
+    height: 42px;
+    background: hsl(210, 18%, 93%);
+}
+
+.half .contents .form-control:active,
+.half .contents .form-control:focus,
+.half .bg .form-control:active,
+.half .bg .form-control:focus {
+    background-color: hsl(210, 18%, 93%);
+    border: 1px solid hsl(212, 97%, 43%);
+    box-shadow: 0 0 0 2px hsla(212, 97%, 43%, .25);
+}
+
+half .btn {
+    height: 37px;
+}
+
+.half a {
+    cursor: default;
+}
+
+label {
+    font-size: 14px;
+    font-weight: 300;
+}
+
+.mb-5,
+.my-5 {
+    margin-bottom: 1rem !important;
+}
+
+.my-2 {
+    margin-top: 1rem !important;
+    margin-bottom: 1rem !important;
+}
+
+
+button.btn.text-reset.py-2.text-start.bi.bi-chat-left-text:hover {
+    border-radius: 0px;
+    box-shadow: inset 0 0 0 100px hsla(0, 0%, 0%, .03);
+}
+
+button.btn.text-reset.py-2.text-start.bi.bi-chat-left-text:focus {
+    border-radius: 2px;
+    box-shadow: inset 0 0 0 100px hsla(0, 0%, 0%, .1),
+        0 0 0 3px hsla(212, 97%, 43%, .25),
+        0 0 0 1px hsl(212, 97%, 43%);
+}
+
+.offcanvas.offcanvas-end {
+    box-shadow: -5px 0 15px hsla(0, 0%, 0%, .2);
+    border-left: 1px solid hsla(0, 0%, 0%, .2);
+}
+
+.bi-dot {
+    vertical-align: -2px !important;
+}
+
+.form-select {
+    border-radius: 2px;
+    font-weight: lighter;
+}

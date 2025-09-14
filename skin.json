@@ -17,6 +17,12 @@
                 "name": "Classic",
                 "description": "Emulates the version of SquareBracket from 2021.",
                 "author": "OpenSB developers"
+            },
+            {
+                "id": "ardosia",
+                "name": "Ardosia (Brickface)",
+                "description": "Emulates the version of SquareBracket from 2021.",
+                "author": "magnum22"
             }
         ]
     }

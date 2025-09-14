@@ -1,11 +1,5 @@
 {% if is_chaziz_sb and not is_fulptube %}
-    {% if current_theme == "alpha3" %}
-        {% set logo = '/assets/sb_branding/bootstrap/logo-alpha3.png' %}
-    {% elseif current_theme == "alpha2" %}
-        {% set logo = '/assets/sb_branding/bootstrap/logo-alpha2.png' %}
-    {% else %}
-        {% set logo = '/assets/sb_branding/bootstrap/logo.png' %}
-    {% endif %}
+    {% set logo = '/assets/sb_branding/bootstrap/logo.png' %}
 {% else %}
     {% set logo = website_branding.assets_location ~ '/logo.png' %}
 {% endif %}
@@ -42,12 +36,10 @@
         {{ warning_banner_text | raw }}
     </div>
 {% endif %}
-{% if current_theme == "default" %}
-    {{ include('/components/_header_default.twig') }}
-{% elseif current_theme == "classic" %}
+{% if current_theme == "classic" %}
     {{ include('/components/_header_classic.twig') }}
 {% else %}
-    insert header here
+    {{ include('/components/_header_default.twig') }}
 {% endif %}
 {% block precontent %}{% endblock %}
 <div class="container">
