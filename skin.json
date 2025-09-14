@@ -3,13 +3,13 @@
         "id": "bootstrap",
         "name": "Bootstrap",
         "author": "OpenSB developers",
-        "description": "The 2021 SquareBracket user experience.",
+        "description": "The 2021 SquareBracket look.",
         "site": "squarebracket",
         "themes": [
             {
                 "id": "default",
                 "name": "Default",
-                "description": "The classic 2021 SquareBracket user experience.",
+                "description": "The 2021 SquareBracket look.",
                 "author": "OpenSB developers"
             },
             {
@@ -20,8 +20,8 @@
             },
             {
                 "id": "ardosia",
-                "name": "Ardosia (Brickface)",
-                "description": "Emulates the version of SquareBracket from 2021.",
+                "name": "Ardosia",
+                "description": "The Brickface look.",
                 "author": "magnum22"
             }
         ]
