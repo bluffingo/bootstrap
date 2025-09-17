@@ -15,147 +15,103 @@
 
 	{% block content %}
         <div class="row">
-            {% if current_theme == "alpha2" %}
-                <h2>{{ submission.title }}</h2>
-                <div class="mb-3">
-                    <a href="/user/{{ submission.author.info.username }}" class="btn btn-secondary">
-                        {{ submission.author.info.username }}
-                    </a>
-                    <button class="btn btn-warning" type="button">Subscribe</button>
-                </div>
-            {% endif %}
             <div class="col-lg-9">
                 {{ submission_view(submission) }}
                 <div style="margin-top:5px">
                     <div class="card">
                         <div class="card-body">
-                            {% if current_theme == "alpha2" %}
-                                <div class="row">
-                                    <div class="col-lg-11">
-                                        <p>
-                                            <small>
-                                                Uploaded by {{ user_link(submission.author) }}
-                                                on {{ submission.published | date('M j, Y') }}
+                            <h4>{{ submission.title }}</h4>
+                            <hr class="mt-2 mb-3"/>
+                            <div class="row">
+                                <div class="col-lg-9">
+                                    <div class="row">
+                                        <div class="col-lg-2" style="width:10%;padding-right:0">
+                                            <a href="/user/{{ submission.author.info.username }}">
+                                                <img class="float-start rounded-circle w-100"
+                                                        src="{{ profile_picture(submission.author.info.username) }}">
+                                            </a>
+                                        </div>
+                                        <div class="col-lg-10">
+                                            {{ user_link(submission.author) }}<br>
+                                            <small>Uploaded on {{ submission.published | date('M j, Y') }}
                                                 • {{ submission.interactions.views }} views
+                                                {% if submission.published_originally and submission.original_site %}
+                                                    <br>First uploaded on {{ submission.original_site }} on {{ submission.published_originally | date('M j, Y') }}
+                                                {% elseif submission.original_site %}
+                                                    <br>Originally uploaded on {{ submission.original_site }}
+                                                {% endif %}
                                             </small>
-                                        </p>
-                                        <p>{{ submission.description }}</p>
-                                    </div>
-                                    <div class="col-lg-1">
-                                        <a href="#"
-                                           id="{% if is_user_logged_in %}like{% else %}action_unlogged{% endif %}"
-                                           class="text-{% if submission.interactions.legacy.likes != 0 %}success{% else %}body{% endif %}"
-                                           style="text-decoration: none;">
-                                            {{ icon("hand-thumbs-up-fill", 20) }}
-                                        </a>
-                                        <span id="likes">{{ submission.interactions.legacy.likes }}</span>
-
-                                        <a href="#"
-                                           id="{% if is_user_logged_in %}dislike{% else %}action_unlogged{% endif %}"
-                                           class="text-{% if total_dislikessubmission.interactions.legacy.dislikes != 0 %}danger{% else %}body{% endif %}"
-                                           style="text-decoration: none;">
-                                            {{ icon("hand-thumbs-down-fill", 20) }}
-                                        </a>
-                                        <span id="dislikes"
-                                              style="padding-right: 10px">{{ submission.interactions.legacy.dislikes }}</span>
-                                    </div>
-                                </div>
-                            {% else %}
-                                <h4>{{ submission.title }}</h4>
-                                <hr class="mt-2 mb-3"/>
-                                <div class="row">
-                                    <div class="col-lg-9">
-                                        <div class="row">
-                                            <div class="col-lg-2" style="width:10%;padding-right:0">
-                                                <a href="/user/{{ submission.author.info.username }}">
-                                                    <img class="float-start rounded-circle w-100"
-                                                         src="{{ profile_picture(submission.author.info.username) }}">
-                                                </a>
-                                            </div>
-                                            <div class="col-lg-10">
-                                                {{ user_link(submission.author) }}<br>
-                                                <small>Uploaded on {{ submission.published | date('M j, Y') }}
-                                                    • {{ submission.interactions.views }} views
-                                                    {% if submission.published_originally and submission.original_site %}
-                                                        <br>First uploaded on {{ submission.original_site }} on {{ submission.published_originally | date('M j, Y') }}
-                                                    {% elseif submission.original_site %}
-                                                        <br>Originally uploaded on {{ submission.original_site }}
-                                                    {% endif %}
-                                                </small>
-                                            </div>
                                         </div>
                                     </div>
-                                    <div class="col-3 text-end">
-                                        <a href="#"
-                                           id="{% if is_user_logged_in %}like{% else %}action_unlogged{% endif %}"
-                                           class="text-{% if submission.interactions.legacy.likes != 0 %}success{% else %}body{% endif %}"
-                                           style="text-decoration: none;">
-                                            {{ icon("hand-thumbs-up-fill", 20) }}
-                                        </a>
-                                        <span id="likes">{{ submission.interactions.legacy.likes }}</span>
-
-                                        <a href="#"
-                                           id="{% if is_user_logged_in %}dislike{% else %}action_unlogged{% endif %}"
-                                           class="text-{% if total_dislikessubmission.interactions.legacy.dislikes != 0 %}danger{% else %}body{% endif %}"
-                                           style="text-decoration: none;">
-                                            {{ icon("hand-thumbs-down-fill", 20) }}
-                                        </a>
-                                        <span id="dislikes"
-                                              style="padding-right: 10px">{{ submission.interactions.legacy.dislikes }}</span>
-
-                                        <button id="subscribe"
-                                                class="btn btn-{% if submission.author.following %}secondary{% else %}primary{% endif %}"
-                                                type="button"
-                                                {% if not is_user_logged_in or submission.is_owner %}disabled{% endif %}>{% if submission.author.following %}Unfollow{% elseif submission.is_owner %}Edit{% else %}Follow{% endif %}</button>
-                                    </div>
                                 </div>
-                                <div style="margin-top: 1rem;">
-                                    {% if submission.description | trim is not empty %}
-                                        {{ submission.description | markdown_user_written }}
-                                    {% else %}
-                                        <p>This upload has no description.</p>
-                                    {% endif %}
+                                <div class="col-3 text-end">
+                                    <a href="#"
+                                        id="{% if is_user_logged_in %}like{% else %}action_unlogged{% endif %}"
+                                        class="text-{% if submission.interactions.legacy.likes != 0 %}success{% else %}body{% endif %}"
+                                        style="text-decoration: none;">
+                                        {{ icon("hand-thumbs-up-fill", 20) }}
+                                    </a>
+                                    <span id="likes">{{ submission.interactions.legacy.likes }}</span>
+
+                                    <a href="#"
+                                        id="{% if is_user_logged_in %}dislike{% else %}action_unlogged{% endif %}"
+                                        class="text-{% if total_dislikessubmission.interactions.legacy.dislikes != 0 %}danger{% else %}body{% endif %}"
+                                        style="text-decoration: none;">
+                                        {{ icon("hand-thumbs-down-fill", 20) }}
+                                    </a>
+                                    <span id="dislikes"
+                                            style="padding-right: 10px">{{ submission.interactions.legacy.dislikes }}</span>
+
+                                    <button id="subscribe"
+                                            class="btn btn-{% if submission.author.following %}secondary{% else %}primary{% endif %}"
+                                            type="button"
+                                            {% if not is_user_logged_in or submission.is_owner %}disabled{% endif %}>{% if submission.author.following %}Unfollow{% elseif submission.is_owner %}Edit{% else %}Follow{% endif %}</button>
                                 </div>
-                                <hr class="mt-3 mb-3"/>
-                                {% if submission.tags %}
-                                    Tags:
-                                    {% for tag in submission.tags %}
-                                        <a href="/search?query={{ tag.name }}">{{ tag.name }}</a>{{ not loop.last ? ',' }}
-                                    {% endfor %}
+                            </div>
+                            <div style="margin-top: 1rem;">
+                                {% if submission.description | trim is not empty %}
+                                    {{ submission.description | markdown_user_written }}
+                                {% else %}
+                                    <p>This upload has no description.</p>
                                 {% endif %}
-                                <hr class="mt-3 mb-3"/>
-                                <div class="small">
-                                    <span>
-                                        Type:
-                                    {% if submission.type == 2 %}
-                                        Image
-                                    {% elseif submission.type == 3 %}
-                                        Music
-                                    {% else %}
-                                        Video
-                                    {% endif %}
-                                    </span>
-                                    •
-                                    <span>
-                                        Rating:
-                                    {% if submission.rating == 'mature' %}
-                                        Mature
-                                    {% else %}
-                                        General
-                                    {% endif %}
-                                    </span>
-                                </div>
+                            </div>
+                            <hr class="mt-3 mb-3"/>
+                            {% if submission.tags %}
+                                Tags:
+                                {% for tag in submission.tags %}
+                                    <a href="/search?query={{ tag.name }}">{{ tag.name }}</a>{{ not loop.last ? ',' }}
+                                {% endfor %}
                             {% endif %}
+                            <hr class="mt-3 mb-3"/>
+                            <div class="small">
+                                <span>
+                                    Type:
+                                {% if submission.type == 2 %}
+                                    Image
+                                {% elseif submission.type == 3 %}
+                                    Music
+                                {% else %}
+                                    Video
+                                {% endif %}
+                                </span>
+                                •
+                                <span>
+                                    Rating:
+                                {% if submission.rating == 'mature' %}
+                                    Mature
+                                {% else %}
+                                    General
+                                {% endif %}
+                                </span>
+                            </div>
                         </div>
                     </div>
                 </div> <!-- WATCH VIDEO BOX -->
                 <div class="mt-1">
-                    {% if current_theme != "alpha3" and current_theme != "alpha2" %}
                     <div class="card">
                         <div class="card-body">
                             <h5>Comments</h5>
                             <hr class="mt-2 mb-3"/>
-                            {% endif %}
                             <textarea class="form-control mt-2 mb-2" id="commentContents"
                                       style="overflow:hidden;resize:none"
                                       rows="3"
@@ -175,39 +131,24 @@
                             {% for comment in submission.comments %}
                                 {{ include('/components/comment.twig') }}
                             {% endfor %}
-                            {% if current_theme != "alpha3" and current_theme != "alpha2" %}
                         </div>
                     </div>
-                    {% endif %}
                 </div>
             </div>
             <div class="col-lg-3">
-                {% if current_theme == "alpha3" or current_theme == "alpha2" %}
-                <div class="card">
-                    {% if current_theme == "alpha3" %}
-                        <div class="card-header">
-                            Recommended
-                        </div>
-                    {% endif %}
-                    <div class="card-body">
-                        {% endif %}
-                        {% if submission.recommended %}
-                            {% for submission in submission.recommended %}
-                                {{ include('/components/smallvideobox.twig') }}
-                            {% endfor %}
-                        {% elseif submission.other_by_author %}
-                            {% for submission in submission.other_by_author %}
-                                {{ include('/components/smallvideobox.twig') }}
-                            {% endfor %}
-                        {% elseif submission.random %}
-                            {% for submission in submission.random %}
-                                {{ include('/components/smallvideobox.twig') }}
-                            {% endfor %}
-                        {% endif %}
-                        {% if current_theme == "alpha3" or current_theme == "alpha2" %}
-                    </div>
-                    {% endif %}
-                </div>
+                {% if submission.recommended %}
+                    {% for submission in submission.recommended %}
+                        {{ include('/components/smallvideobox.twig') }}
+                    {% endfor %}
+                {% elseif submission.other_by_author %}
+                    {% for submission in submission.other_by_author %}
+                        {{ include('/components/smallvideobox.twig') }}
+                    {% endfor %}
+                {% elseif submission.random %}
+                    {% for submission in submission.random %}
+                        {{ include('/components/smallvideobox.twig') }}
+                    {% endfor %}
+                {% endif %}
             </div>
         </div>
     {% endblock %}

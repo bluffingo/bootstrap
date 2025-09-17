@@ -2,21 +2,27 @@
     "metadata": {
         "id": "bootstrap",
         "name": "Bootstrap",
-        "author": "OpenSB developers",
-        "description": "The 2021 SquareBracket look.",
+        "author": "Bluffingo Development",
+        "description": "A Bootstrap-based frontend for OpenSB.",
         "site": "squarebracket",
         "themes": [
             {
                 "id": "default",
                 "name": "Default",
-                "description": "The 2021 SquareBracket look.",
-                "author": "OpenSB developers"
+                "description": "The default option. Rewrite this description later.",
+                "author": "Bluffingo Development"
             },
             {
                 "id": "classic",
                 "name": "Classic",
-                "description": "Emulates the version of SquareBracket from 2021.",
-                "author": "OpenSB developers"
+                "description": "Emulates the version of SquareBracket from mid-2021.",
+                "author": "Bluffingo Development"
+            },
+            {
+                "id": "vanilla",
+                "name": "Vanilla",
+                "description": "The default look of Bootstrap.",
+                "author": "Bluffingo Development"
             },
             {
                 "id": "ardosia",

@@ -1,32 +1,33 @@
-@each $state, $value in $theme-colors {
-  .bg-#{$state} {
-    background-image: var(--bs-gradient);
-
-    @include gradient-y($start-color: lighten($value, 5%), $end-color: $value);
-  }
-}
-
 @mixin btn-styles($btn-color: #555) {
-  @include gradient-y($start-color: $btn-color, $end-color: darken($btn-color, 5%));
-  border-color: darken($btn-color, 14%);
+    @include gradient-y($start-color: $btn-color, $end-color: darken($btn-color, 5%));
+    border-color: darken($btn-color, 14%);
 }
 
-// Apply the mixin to the buttons
-@each $state, $value in $theme-colors {
-  .btn-#{$state} {
-    @include btn-styles($value);
-  }
+@if $theme !="vanilla" {
+    @each $state, $value in $theme-colors {
+        .bg-#{$state} {
+            background-image: var(--bs-gradient);
+
+            @include gradient-y($start-color: lighten($value, 5%), $end-color: $value);
+        }
+    }
+
+    @each $state, $value in $theme-colors {
+        .btn-#{$state} {
+            @include btn-styles($value);
+        }
+    }
 }
 
 .alert-fullscreen {
-  text-align: center;
-  border-radius: 0;
-  margin: 0;
-  padding: 0.4em;
+    text-align: center;
+    border-radius: 0;
+    margin: 0;
+    padding: 0.4em;
 }
 
 .emoji {
-  display: inline;
-  width: 24px;
-  vertical-align: middle;
+    display: inline;
+    width: 24px;
+    vertical-align: middle;
 }

@@ -7,7 +7,11 @@
         <div class="col-xl-8">
             <div class="row">
                 <div class="col-8">
+                    {% if current_theme == "classic" %}
                     <h3>Recently uploaded to {{ website_branding.name }}</h3>
+                    {% else %}
+                    <h3>{{ localize('recent_uploads') }}</h3>
+                    {% endif %}
                 </div>
                 <div class="col-4">
                     <div class="text-end"><a href="/browse"
@@ -22,26 +26,49 @@
         </div>
         <div class="col-xl-4">
             {% if is_user_logged_in %}
-                {# hack to prevent twig from outputing the number 1 #}
-                {% if user_stat_data.followers != 1 %}
-                    {% set pluralSubscribers = "s" %}
-                {% endif %}
-                {% if user_stat_data.views != 1 %}
-                    {% set pluralViews = "s" %}
-                {% endif %}
-                <div>
-                    <img class="float-start rounded-circle w-25 me-3"
-                            src="{{ profile_picture(user_data.name) }}"
-                            alt="{{ user_data.name }}">
-                    <div class="text-start float-start">
-                        <h3>{{ user_data.title }}</h3>
-                        <p class="fs-5 mb-1">@{{ user_data.name }}</p>
-                        <p class="mb-2">{{ user_stat_data.followers ?? "no" }}
-                            subscriber{{ pluralSubscribers }}</p>
-                        <p class="mb-2">{{ user_stat_data.views ?? "no" }} view{{ pluralViews }}</p>
+                    {% if current_theme == "classic" %}
+                    {# hack to prevent twig from outputing the number 1 #}
+                    {% if user_stat_data.followers != 1 %}
+                        {% set pluralSubscribers = "s" %}
+                    {% endif %}
+                    {% if user_stat_data.views != 1 %}
+                        {% set pluralViews = "s" %}
+                    {% endif %}
+                    <div>
+                        <img class="float-start rounded-circle w-25 me-3"
+                                src="{{ profile_picture(user_data.name) }}"
+                                alt="{{ user_data.name }}">
+                        <div class="text-start float-start">
+                            <h3>{{ user_data.title }}</h3>
+                            <p class="fs-5 mb-1">@{{ user_data.name }}</p>
+                            <p class="mb-2">{{ user_stat_data.followers ?? "no" }}
+                                subscriber{{ pluralSubscribers }}</p>
+                            <p class="mb-2">{{ user_stat_data.views ?? "no" }} view{{ pluralViews }}</p>
+                        </div>
                     </div>
-                </div>
-                <div class="clearfix"></div>
+                    <div class="clearfix"></div>
+                {% else %}
+                    <div class="d-flex align-items-start gap-3">
+                        <img class="rounded-circle flex-shrink-0" 
+                            src="{{ profile_picture(user_data.name) }}"
+                            alt="{{ user_data.name }}"
+                            style="width: 80px; height: 80px; object-fit: cover;">
+                        
+                        <div>
+                            <h4 class="mb-1">{{ user_data.title }}</h4>
+                            <p class="text-body-secondary mb-2">@{{ user_data.name }}</p>
+                            
+                            <div class="d-flex gap-3 text-body-secondary">
+                                <span>
+                                    {{ localize('followers', user_stat_data.followers) }}
+                                </span>
+                                <span>
+                                    {{ localize('views', user_stat_data.views) }}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
             {% else %}
                 <h3>Welcome to {{ website_branding.name }}</h3>
                 {% if is_chaziz_sb %}
