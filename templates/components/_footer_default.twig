@@ -2,7 +2,7 @@
     <div class="container">
         <div class="card">
             <div class="card-body">
-                <h4 class="my-0">OpenSB {{ opensb_version }}</h4>
+                <h4 class="my-0">OpenSB {{ opensb_version.name }} {{ opensb_version.number }}</h4>
                 <p class="my-0">{{ localize('footer_copyright', ('now' | date('Y'))) }}</p>
                 <p class="my-0">
                     {% for link in footer_links() %}

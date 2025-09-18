@@ -24,10 +24,10 @@
     <script>
         subscribe_string = 'Follow';
         unsubscribe_string = 'Unfollow';
-        opensb_version = '{{ opensb_version }}';
+        opensb_version = '{{ opensb_version.name }} {{ opensb_version.string }}';
     </script>
     <script src="/assets/common_shared.js?r={{ get_css_file_date() }}"></script>
-    <meta name="theme-color" content="#0065d8">
+    <meta name="theme-color" content="#0069B4">
     <title>{% block title %}{% endblock %} - {{ website_branding.name }}</title>
 </head>
 <body>
