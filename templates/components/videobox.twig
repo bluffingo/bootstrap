@@ -2,21 +2,21 @@
     <div class="card-body">
         <div class="row">
             <div class="col-4">
-                <a href="/view/{{ submission.id }}">
+                <a href="/view/{{ upload.id }}">
                     <div class="img-thumbnail">
-                        <img class="img-fluid" src="{{ thumbnail(submission.id, submission.type, submission.flags.custom_thumbnail) }}">
+                        <img class="img-fluid" src="{{ thumbnail(upload.id, upload.type, upload.flags.custom_thumbnail) }}">
                     </div>
                 </a>
             </div>
             <div class="col-6">
-                <h3><a href="/view/{{ submission.id }}">{{ submission.title }}</a></h3>
+                <h3><a href="/view/{{ upload.id }}">{{ upload.title }}</a></h3>
                 {# hack to prevent twig from outputing the number 1 #}
-                {% if submission.views != 1 %}
+                {% if upload.views != 1 %}
                     {% set pluralViews = "s" %}
                 {% endif %}
-                <p>{{ user_link(submission.author) }} &bull; {{ submission.views }} view{{pluralViews}} &bull;
-                    <span class="text-muted">{{ submission.published | relative_time }}</span></p>
-                <p>{{ submission.description|length > 250 ? submission.description|slice(0, 250) ~ '...' : submission.description }}</p>
+                <p>{{ user_link(upload.author) }} &bull; {{ upload.views }} view{{pluralViews}} &bull;
+                    <span class="text-muted">{{ upload.published | relative_time }}</span></p>
+                <p>{{ upload.description|length > 250 ? upload.description|slice(0, 250) ~ '...' : upload.description }}</p>
             </div>
         </div>
     </div>

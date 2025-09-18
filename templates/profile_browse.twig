@@ -8,7 +8,7 @@
         <div class="card mb-2">
             <div class="card-body">
                 <h3>{{ localize('uploads') }}</h3>
-                {% for submission in data.submissions %}
+                {% for upload in data.uploads %}
                     {{ include('/components/smallvideobox.twig') }}
                 {% else %}
                     <p>There are currently no uploads by {{ data.username }}.</p>

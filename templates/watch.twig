@@ -1,44 +1,44 @@
 {% extends "_layout.twig" %}
 
 {% block head %}
-    <meta name="title" content="{{ submission.title }} - {{ website_branding.name }}">
+    <meta name="title" content="{{ upload.title }} - {{ website_branding.name }}">
     <meta name="description"
-          content="{{ submission.description|length > 250 ? submission.description|slice(0, 250) ~ '...' : submission.description }}">
+          content="{{ upload.description|length > 250 ? upload.description|slice(0, 250) ~ '...' : upload.description }}">
     <script>
-        video_id = '{{ submission.id }}';
-        user_id = '{{ submission.author.id }}';
-        submission_int_id = '{{ submission.int_id }}';
+        video_id = '{{ upload.id }}';
+        user_id = '{{ upload.author.id }}';
+        upload_int_id = '{{ upload.int_id }}';
     </script>
 {% endblock %}
 
-{% block title %}{{ submission.title }}{% endblock %}
+{% block title %}{{ upload.title }}{% endblock %}
 
 	{% block content %}
         <div class="row">
             <div class="col-lg-9">
-                {{ submission_view(submission) }}
+                {{ upload_view(upload) }}
                 <div style="margin-top:5px">
                     <div class="card">
                         <div class="card-body">
-                            <h4>{{ submission.title }}</h4>
+                            <h4>{{ upload.title }}</h4>
                             <hr class="mt-2 mb-3"/>
                             <div class="row">
                                 <div class="col-lg-9">
                                     <div class="row">
                                         <div class="col-lg-2" style="width:10%;padding-right:0">
-                                            <a href="/user/{{ submission.author.info.username }}">
+                                            <a href="/user/{{ upload.author.info.username }}">
                                                 <img class="float-start rounded-circle w-100"
-                                                        src="{{ profile_picture(submission.author.info.username) }}">
+                                                        src="{{ profile_picture(upload.author.info.username) }}">
                                             </a>
                                         </div>
                                         <div class="col-lg-10">
-                                            {{ user_link(submission.author) }}<br>
-                                            <small>Uploaded on {{ submission.published | date('M j, Y') }}
-                                                • {{ submission.interactions.views }} views
-                                                {% if submission.published_originally and submission.original_site %}
-                                                    <br>First uploaded on {{ submission.original_site }} on {{ submission.published_originally | date('M j, Y') }}
-                                                {% elseif submission.original_site %}
-                                                    <br>Originally uploaded on {{ submission.original_site }}
+                                            {{ user_link(upload.author) }}<br>
+                                            <small>Uploaded on {{ upload.published | date('M j, Y') }}
+                                                • {{ upload.interactions.views }} views
+                                                {% if upload.published_originally and upload.original_site %}
+                                                    <br>First uploaded on {{ upload.original_site }} on {{ upload.published_originally | date('M j, Y') }}
+                                                {% elseif upload.original_site %}
+                                                    <br>Originally uploaded on {{ upload.original_site }}
                                                 {% endif %}
                                             </small>
                                         </div>
@@ -47,38 +47,38 @@
                                 <div class="col-3 text-end">
                                     <a href="#"
                                         id="{% if is_user_logged_in %}like{% else %}action_unlogged{% endif %}"
-                                        class="text-{% if submission.interactions.legacy.likes != 0 %}success{% else %}body{% endif %}"
+                                        class="text-{% if upload.interactions.legacy.likes != 0 %}success{% else %}body{% endif %}"
                                         style="text-decoration: none;">
                                         {{ icon("hand-thumbs-up-fill", 20) }}
                                     </a>
-                                    <span id="likes">{{ submission.interactions.legacy.likes }}</span>
+                                    <span id="likes">{{ upload.interactions.legacy.likes }}</span>
 
                                     <a href="#"
                                         id="{% if is_user_logged_in %}dislike{% else %}action_unlogged{% endif %}"
-                                        class="text-{% if total_dislikessubmission.interactions.legacy.dislikes != 0 %}danger{% else %}body{% endif %}"
+                                        class="text-{% if total_dislikesupload.interactions.legacy.dislikes != 0 %}danger{% else %}body{% endif %}"
                                         style="text-decoration: none;">
                                         {{ icon("hand-thumbs-down-fill", 20) }}
                                     </a>
                                     <span id="dislikes"
-                                            style="padding-right: 10px">{{ submission.interactions.legacy.dislikes }}</span>
+                                            style="padding-right: 10px">{{ upload.interactions.legacy.dislikes }}</span>
 
                                     <button id="subscribe"
-                                            class="btn btn-{% if submission.author.following %}secondary{% else %}primary{% endif %}"
+                                            class="btn btn-{% if upload.author.following %}secondary{% else %}primary{% endif %}"
                                             type="button"
-                                            {% if not is_user_logged_in or submission.is_owner %}disabled{% endif %}>{% if submission.author.following %}Unfollow{% elseif submission.is_owner %}Edit{% else %}Follow{% endif %}</button>
+                                            {% if not is_user_logged_in or upload.is_owner %}disabled{% endif %}>{% if upload.author.following %}Unfollow{% elseif upload.is_owner %}Edit{% else %}Follow{% endif %}</button>
                                 </div>
                             </div>
                             <div style="margin-top: 1rem;">
-                                {% if submission.description | trim is not empty %}
-                                    {{ submission.description | markdown_user_written }}
+                                {% if upload.description | trim is not empty %}
+                                    {{ upload.description | markdown_user_written }}
                                 {% else %}
                                     <p>This upload has no description.</p>
                                 {% endif %}
                             </div>
                             <hr class="mt-3 mb-3"/>
-                            {% if submission.tags %}
+                            {% if upload.tags %}
                                 Tags:
-                                {% for tag in submission.tags %}
+                                {% for tag in upload.tags %}
                                     <a href="/search?query={{ tag.name }}">{{ tag.name }}</a>{{ not loop.last ? ',' }}
                                 {% endfor %}
                             {% endif %}
@@ -86,9 +86,9 @@
                             <div class="small">
                                 <span>
                                     Type:
-                                {% if submission.type == 2 %}
+                                {% if upload.type == 2 %}
                                     Image
-                                {% elseif submission.type == 3 %}
+                                {% elseif upload.type == 3 %}
                                     Music
                                 {% else %}
                                     Video
@@ -97,7 +97,7 @@
                                 •
                                 <span>
                                     Rating:
-                                {% if submission.rating == 'mature' %}
+                                {% if upload.rating == 'mature' %}
                                     Mature
                                 {% else %}
                                     General
@@ -128,7 +128,7 @@
                                 </button>
                                 </div>{% endif %}
                             <div id="comment"></div>
-                            {% for comment in submission.comments %}
+                            {% for comment in upload.comments %}
                                 {{ include('/components/comment.twig') }}
                             {% endfor %}
                         </div>
@@ -136,16 +136,16 @@
                 </div>
             </div>
             <div class="col-lg-3">
-                {% if submission.recommended %}
-                    {% for submission in submission.recommended %}
+                {% if upload.recommended %}
+                    {% for upload in upload.recommended %}
                         {{ include('/components/smallvideobox.twig') }}
                     {% endfor %}
-                {% elseif submission.other_by_author %}
-                    {% for submission in submission.other_by_author %}
+                {% elseif upload.other_by_author %}
+                    {% for upload in upload.other_by_author %}
                         {{ include('/components/smallvideobox.twig') }}
                     {% endfor %}
-                {% elseif submission.random %}
-                    {% for submission in submission.random %}
+                {% elseif upload.random %}
+                    {% for upload in upload.random %}
                         {{ include('/components/smallvideobox.twig') }}
                     {% endfor %}
                 {% endif %}

@@ -18,9 +18,9 @@
             <div class="col">
                 <h3>{{ localize('browse') }} uploads</h3>
                 <div class="card-body">
-                    {% for video in data.submissions|batch(4) %}
+                    {% for video in data.uploads|batch(4) %}
                         <div class="row">
-                            {% for submission in video %}
+                            {% for upload in video %}
                                 <div class="col-3">
                                     {{ include('/components/browsevideobox.twig') }}
                                 </div>

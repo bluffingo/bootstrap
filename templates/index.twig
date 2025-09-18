@@ -18,7 +18,7 @@
                                                 class="btn btn-light btn-sm">Browse</a></div>
                 </div>
             </div>
-            {% for submission in data.submissions_new %}
+            {% for upload in data.uploads_new %}
                 {{ include('/components/videobox.twig') }}
             {% else %}
                 <p>No uploads.</p>
