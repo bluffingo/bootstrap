@@ -3,13 +3,13 @@
         "id": "bootstrap",
         "name": "Bootstrap",
         "author": "Bluffingo Development",
-        "description": "A Bootstrap-based frontend for OpenSB.",
+        "description": "A Bootstrap-based skin for OpenSB.",
         "site": "squarebracket",
         "themes": [
             {
                 "id": "default",
                 "name": "Default",
-                "description": "The default option. Rewrite this description later.",
+                "description": "The default theme for this skin.",
                 "author": "Bluffingo Development"
             },
             {
