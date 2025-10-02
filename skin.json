@@ -3,7 +3,7 @@
         "id": "bootstrap",
         "name": "Bootstrap",
         "author": "Bluffingo Development",
-        "description": "A Bootstrap-based skin for OpenSB.",
+        "description": "The earlier look of SquareBracket.",
         "site": "squarebracket",
         "themes": [
             {
