@@ -11,7 +11,7 @@
                         {% for user in users.users %}
                             <div class="d-flex align-items-center mb-3">
                                 <a href="/user/{{ user.info.username }}" class="me-3">
-                                    <img src="{{ profile_picture(user.info.username) }}"
+                                    <img src="{{ profile_picture(user.id) }}"
                                          alt="{{ user.info.username }}"
                                          class="rounded-circle"
                                          width="60"

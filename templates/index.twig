@@ -36,7 +36,7 @@
                     {% endif %}
                     <div>
                         <img class="float-start rounded-circle w-25 me-3"
-                                src="{{ profile_picture(user_data.name) }}"
+                                src="{{ profile_picture(user_data.id) }}"
                                 alt="{{ user_data.name }}">
                         <div class="text-start float-start">
                             <h3>{{ user_data.title }}</h3>
@@ -50,7 +50,7 @@
                 {% else %}
                     <div class="d-flex align-items-start gap-3">
                         <img class="rounded-circle flex-shrink-0" 
-                            src="{{ profile_picture(user_data.name) }}"
+                            src="{{ profile_picture(user_data.id) }}"
                             alt="{{ user_data.name }}"
                             style="width: 80px; height: 80px; object-fit: cover;">
                         

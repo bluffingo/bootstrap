@@ -37,7 +37,7 @@
                 {% if is_user_logged_in %}
                     <div class="dropdown nav-item">
                         <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                            <img src="{{ profile_picture(user_data.name) }}" alt="{{ user_data.name }}" class="rounded-circle" width="32" height="32">
+                            <img src="{{ profile_picture(user_data.id) }}" alt="{{ user_data.name }}" class="rounded-circle" width="32" height="32">
                         </a>
                         <ul class="dropdown-menu text-small dropdown-menu-end" style="">
                             {% for link in header_user_links() %}
