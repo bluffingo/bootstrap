@@ -2,6 +2,12 @@
 
 {% block title %}Home{% endblock %}
 
+{% if current_theme == "classic" %}
+{% set upload_list = data.uploads_new %}
+{% else %}
+{% set upload_list = data.uploads_featured %}
+{% endif %}
+
 {% block content %}
     <div class="row">
         <div class="col-xl-8">
@@ -10,7 +16,7 @@
                     {% if current_theme == "classic" %}
                     <h3>Recently uploaded to {{ website_branding.name }}</h3>
                     {% else %}
-                    <h3>{{ localize('homepage_recent_uploads') }}</h3>
+                    <h3>{{ localize('featured_uploads') }}</h3>
                     {% endif %}
                 </div>
                 <div class="col-4">
@@ -18,7 +24,7 @@
                                                 class="btn btn-light btn-sm">Browse</a></div>
                 </div>
             </div>
-            {% for upload in data.uploads_new %}
+            {% for upload in upload_list %}
                 {{ include('/components/videobox.twig') }}
             {% else %}
                 <p>No uploads.</p>
@@ -71,7 +77,9 @@
                 {% endif %}
             {% else %}
                 <h3>Welcome to {{ website_branding.name }}</h3>
-                {% if is_chaziz_sb %}
+                {% if slogan %}
+                    <p><q>{{ slogan }}</q></p>
+                {% elseif is_chaziz_sb %}
                     <p>I can't believe it's not PokTube</p>
                 {% endif %}
                 <div class="btn-group my-auto w-100">
