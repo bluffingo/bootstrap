@@ -1,8 +1,13 @@
 {% if is_chaziz_sb and not is_fulptube %}
     {% set logo = '/assets/sb_branding/bootstrap/logo.png' %}
 {% else %}
-    {% set logo = website_branding.assets_location ~ '/logo.png' %}
+    {% set logo_suffix = current_theme == "dark" ? '-dark' : '' %}
+    {% set logo_extension = website_branding.is_vector ? '.svg' : '.png' %}
+    {% set logo_type = website_branding.use_wordmark ? 'logo-wordmark' : 'logo' %}
+
+    {% set logo = website_branding.assets_location ~ '/' ~ logo_type ~ logo_suffix ~ logo_extension %}
 {% endif %}
+
 
 <!doctype html>
 <html lang="en">
