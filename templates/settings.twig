@@ -76,23 +76,27 @@
                 <hr class="my-4">
 
                 <div class="mb-4">
-                    <h2 class="h5 mb-3">{{ localize('filtering') }}</h2>
+                    <h2 class="h5 mb-3">Filtering</h2>
 
-                    {% if isUserOver18 %}
-                        <div class="form-check mb-2">
-                            <input class="form-check-input" type="checkbox" name="rating" id="rating" value="true"
-                                    {% if user_data.comfortable_rating == "mature" %}checked{% endif %}>
-                            <label class="form-check-label" for="rating"> {{ localize('enable_sensitive_content') }}</label>
-                        </div>
+                    {% if not is_chaziz_sb %}
+                        {% if isUserOver18 %}
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="checkbox" name="rating" id="rating" value="true"
+                                       {% if user_data.comfortable_rating == "mature" %}checked{% endif %}>
+                                <label class="form-check-label" for="rating"> {% if is_opensb_v1_3 %}Enable adult content{% else %}Enable sensitive content{% endif %}</label>
+                            </div>
 
-                        {#<div class="form-check mb-3">
-                            <input class="form-check-input" type="checkbox" name="rating" id="rating" value="true">
-                            <label class="form-check-label" for="rating"> Block profile/upload access from people under 18</label>
-                        </div>#}
-                    {% else %}
-                        <div class="alert alert-danger">
-                            {{ localize('restricted_sensitive_content', website_branding.name) }}
-                        </div>
+                            <div class="form-check mb-3">
+                                <input class="form-check-input" type="checkbox" name="rating" id="rating" value="true">
+                                <label class="form-check-label" for="rating"> Block profile/upload access from people under 18</label>
+                            </div>
+                        {% else %}
+                            <div class="alert alert-danger">
+                                Based on your account's birthdate, access to mature-rated content is restricted.
+                                If you entered an incorrect birthdate, please contact {{ website_branding.name }}
+                                administration.
+                            </div>
+                        {% endif %}
                     {% endif %}
 
                     <h3 class="h6 mb-3">Blocked tags</h3>
