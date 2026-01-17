@@ -9,13 +9,13 @@
                 <div class="card">
                     <div class="card-body">
                         {% for user in users.users %}
-                            <div class="d-flex align-items-center mb-3">
-                                <a href="/user/{{ user.info.username }}" class="me-3">
+                            <div class="d-flex align-items-center mb-3 gap-3">
+                                <a href="/user/{{ user.info.username }}">
                                     <img src="{{ profile_picture(user.id) }}"
                                          alt="{{ user.info.username }}"
-                                         class="rounded-circle"
-                                         width="60"
-                                         height="60">
+                                         class="rounded-circle img-fluid"
+                                         width="64"
+                                         height="64">
                                 </a>
                                 <div>
                                     <div class="fw-bold">{{ user_link(user) }}</div>
