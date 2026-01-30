@@ -23,6 +23,12 @@
                 "name": "Vanilla",
                 "description": "The default look of Bootstrap.",
                 "author": "Bluffingo Development"
+            },
+            {
+                "id": "ardosia",
+                "name": "Ardosia",
+                "description": "The Brickface/Quadium look.",
+                "author": "magnum22"
             }
         ]
     }
