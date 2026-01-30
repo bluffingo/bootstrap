@@ -7,11 +7,11 @@
         {% set current_page = page %}
 
         {% if user %}
-            {% set le_url = 'browse?user=' ~ user ~ '&page=%s' %}
+            {% set le_url = '/browse?user=' ~ user ~ '&page=%s' %}
         {% elseif type == 'recent' %}
-            {% set le_url = 'browse?page=%s' %}
+            {% set le_url = '/browse?page=%s' %}
         {% else %}
-            {% set le_url = 'browse?type=' ~ type ~ '&page=%s' %}
+            {% set le_url = '/browse?type=' ~ type ~ '&page=%s' %}
         {% endif %}
 
         <div class="row">

@@ -2,41 +2,21 @@
     {% if is_fulptube %}
         {% set logo = '/assets/sb_branding/fulp/vidshr.png' %}
     {% else %}
-        {% if current_theme == "alpha3" %}
-            {% set logo = '/assets/sb_branding/bootstrap/logo-alpha3.png' %}
-        {% else %}
-            {% set logo = '/assets/sb_branding/bootstrap/logo_border_placeholder.png' %}
-        {% endif %}
+        {% set logo = '/assets/sb_branding/bootstrap/logo_border_placeholder.png' %}
     {% endif %}
 {% else %}
-    {% set logo = website_branding.assets_location ~ '/logo.png' %}
+    {% set logo_suffix = current_theme == "dark" ? '-dark' : '' %}
+    {% set logo_extension = website_branding.is_vector ? '.svg' : '.png' %}
+    {% set logo_type = website_branding.use_wordmark ? 'logo-wordmark' : 'logo' %}
+
+    {% set logo = website_branding.assets_location ~ '/' ~ logo_type ~ logo_suffix ~ logo_extension %}
 {% endif %}
 
 <!doctype html>
 <html lang="en" class="signin">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    {% block head %}{% endblock %}
-    <link href="/assets/css/bootstrap-{{ current_theme }}.css?r={{ get_css_file_date() }}" rel="stylesheet"
-          id="bootstrap">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
-            integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
-            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-            crossorigin="anonymous"></script>
-    <script src="/assets/skin/bootstrap/common.js?r={{ get_css_file_date() }}"></script>
-    <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
-    <script>
-        subscribe_string = '{{ localize('follow') }}';
-        unsubscribe_string = '{{ localize('unfollow') }}';
-        opensb_version = '{{ opensb_version.name }} {{ opensb_version.string }}';
-    </script>
-    <meta name="theme-color" content="#0069B4">
     <title>{% block title %}{% endblock %} - {{ website_branding.name }}</title>
+    {{ include('/components/_html_head.twig') }}
 </head>
 <body class="text-center signin">
 {% block content %}{% endblock %}

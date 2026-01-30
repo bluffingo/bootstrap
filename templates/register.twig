@@ -19,7 +19,6 @@
                     <a href="/"><img class="mb-2" src="{{ logo }}" alt="{{ website_branding.name }}" width="90"></a>
                     <h1 class="mb-3 fs-3 text-white">{{ localize('register') }}</h1>
                 {% endif %}
-                <form method="POST">
                     <div class="card">
                         <div class="card-body">
                             <div class="form-floating my-2">
@@ -72,7 +71,7 @@
                     {% endif %}
                 </form>
         </main>
-        {% if hcaptcha_sitekey %}
+        {% if captcha_public_token %}
             <script src='https://www.hCaptcha.com/1/api.js' async defer></script>
         {% endif %}
     {% endblock %}

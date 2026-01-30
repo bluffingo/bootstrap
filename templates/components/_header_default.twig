@@ -1,10 +1,10 @@
 <nav id="navbar" class="navbar navbar-light bg-light navbar-static-top navbar-expand-md">
 	<div class="container">
-		<button class="btn btn-light-outline p-1 me-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+		<button class="btn p-1 me-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
 			{{ icon('list', 24) }}
 		</button>
 		<a class="navbar-brand me-2" href="/"><img src="{{ logo }}" alt="{{ website_branding.name }}" height="32" class="d-inline-block"></a>
-		<form class="d-flex" method="GET" action="search">
+		<form class="d-flex" method="GET" action="/search">
 			<div class="input-group">
 				<input name="query" class="form-control" type="search" placeholder="Search" aria-label="Search">
                 <button type="submit" class="btn btn-light">{{ icon('search', 16 ) }}</button>
@@ -20,7 +20,7 @@
 						<a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
 							<img src="{{ profile_picture(user_data.id) }}" alt="{{ user_data.name }}" class="rounded-circle" width="32" height="32">
 						</a>
-						<ul class="dropdown-menu dropdown-menu-end" style="">
+						<ul class="dropdown-menu dropdown-menu-end">
 							{% for link in header_user_links() %}
 								<a class="dropdown-item" href="{{ link.url }}">{{ link.name }}</a>
 							{% endfor %}

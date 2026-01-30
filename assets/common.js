@@ -1,111 +1,112 @@
-$(document).ready(function () {
-    $(window).click(function () {
-        $("#mainMenu").removeClass("show");
-        $("#themeSelection").removeClass("show");
+function error(error) {
+    console.error("OpenSB Bootstrap Frontend Error: " + error);
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    const postBtn = document.getElementById("post");
+    const commentInput = document.getElementById("commentContents");
+    const spinner = document.getElementById("commentPostingSpinner");
+
+    const subscribeBtn = document.getElementById("subscribe");
+    const likeBtn = document.getElementById("like");
+    const dislikeBtn = document.getElementById("dislike");
+
+    const likesCount = document.getElementById("likes");
+    const dislikesCount = document.getElementById("dislikes");
+
+    const postJSON = (url, data, callback) => {
+        fetch(url, {
+            method: "POST",
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            body: new URLSearchParams(data)
+        })
+            .then(res => res.text())
+            .then(data => callback(data))
+            .catch(err => error(err));
+    };
+
+    const updatePostButtonState = () => {
+        const hasContent = commentInput.value.trim() !== "";
+        postBtn.classList.toggle("disabled", !hasContent);
+    };
+
+    document.getElementById("action_unlogged")?.addEventListener("click", () => {
+        alert('You cannot proceed with this action.');
     });
-    $("#action_unlogged").click(function () {
-        alert('You must be logged in to do that.');
+
+    // commenting (only works with uploads)
+
+    updatePostButtonState();
+
+    commentInput?.addEventListener("input", updatePostButtonState);
+
+    postBtn?.addEventListener("click", () => {
+        if (postBtn.classList.contains("disabled")) return;
+
+        spinner.classList.remove("d-none");
+
+        postJSON("/api/legacy/comment", {
+            comment: commentInput.value.trim(),
+            vidid: video_id,
+            really: "ofcourse",
+            type: "video"
+        }, (data) => {
+            document.getElementById("comment")?.insertAdjacentHTML("afterbegin", data);
+            commentInput.value = "";
+            updatePostButtonState();
+            spinner.classList.add("d-none");
+        });
     });
-    contents = $.trim($("#commentContents").val());
-    if (contents === null || contents == "" && $("#post").attr("class") != "btn btn-primary disabled") {
-        $("#post").addClass("disabled");
-    }
-    $("#commentContents").keydown(function (e) {
-        if (e.key == "Backspace") {
-            contents = $.trim($("#commentContents").val()).slice(0, -1);
-        } else {
-            contents = $.trim($("#commentContents").val()) + e.key;
-        }
-        if (contents == "") {
-            $("#post").addClass("disabled");
-        } else if (contents != "") {
-            $("#post").removeClass("disabled")
-        }
+
+    // following
+
+    subscribeBtn?.addEventListener("click", () => {
+        postJSON("/api/legacy/subscribe", {
+            subscription: user_id
+        }, (data) => {
+            if (data === subscribe_string) {
+                subscribeBtn.textContent = subscribe_string;
+                subscribeBtn.className = "btn btn-primary";
+            } else if (data === unsubscribe_string) {
+                subscribeBtn.textContent = unsubscribe_string;
+                subscribeBtn.className = "btn btn-secondary";
+            } else {
+                error("Failed to follow user " + user_id);
+            }
+        });
     });
-    $("#post").click(function () {
-        $("#commentPostingSpinner").removeClass('d-none');
-        $.post("/api/legacy/comment",
-            {
-                comment: $.trim($('#commentContents').val()),
-                vidid: video_id,
-                really: "ofcourse",
-                type: "video"
-            },
-            function (data, status) {
-                if (status == "success") {
-                    console.log("Commented " + $('#commentContents').val());
-                    $('#comment').prepend(data);
-                    $("#commentContents").val('');
-                    $("#post").addClass("disabled");
-                    $("#commentPostingSpinner").addClass('d-none');
-                }
-            });
+
+    // ratings
+
+    likeBtn?.addEventListener("click", () => {
+        if (likeBtn.classList.contains("text-success")) return;
+
+        postJSON("/api/legacy/rate", {
+            rating: 5,
+            vidid: video_id
+        }, (data) => {
+            if (data == 1) {
+                likeBtn.className = "text-success";
+                dislikeBtn.className = "text-body";
+                likesCount.textContent = Number(likesCount.textContent) + 1;
+                dislikesCount.textContent = Number(dislikesCount.textContent) - 1;
+            }
+        });
     });
-    $("#subscribe").click(function () {
-        $.post("/api/legacy/subscribe",
-            {
-                subscription: user_id
-            },
-            function (data, status) {
-                if (status == "success") {
-                    if (data == subscribe_string) {
-                        $("#subscribe").text(subscribe_string);
-                        $("#subscribe").attr("class", "btn btn-primary");
-                        console.log("Unsubscribed " + user_id);
-                    } else if (data == unsubscribe_string) {
-                        $("#subscribe").text(unsubscribe_string);
-                        $("#subscribe").attr("class", "btn btn-secondary");
-                        console.log("Subscribed " + user_id);
-                    } else {
-                        console.error('unexpected output! report to https://github.com/bluffingo/OpenSB/issues');
-                    }
-                }
-            });
-    });
-    $("#like").click(function () {
-        if ($("#like").attr("class") != "text-success") {
-            $.post("/api/legacy/rate",
-                {
-                    rating: 5, // sb ratings are internally 5 stars
-                    vidid: video_id
-                },
-                function (data, status) {
-                    if (status == "success") {
-                        if (data == 1) {
-                            $("#like").attr("class", "text-success");
-                            $("#likes").text(parseInt($("#likes").text()) + 1)
-                            $("#dislikes").text(parseInt($("#dislikes").text()) - 1)
-                            $("#dislike").attr("class", "text-body");
-                        } else if (data == 0) {
-                            $("#like").click();
-                        } else {
-                            console.error('unexpected output! report to https://github.com/bluffingo/OpenSB/issues');
-                        }
-                    }
-                });
-        }
-    });
-    $("#dislike").click(function () {
-        if ($("#dislike").attr("class") != "text-danger") {
-            $.post("/api/legacy/rate",
-                {
-                    rating: 1, // sb ratings are internally 5 stars
-                    vidid: video_id
-                },
-                function (data, status) {
-                    if (status == "success") {
-                        if (data == 1) {
-                            $("#dislike").attr("class", "text-danger");
-                            $("#dislikes").text(parseInt($("#dislikes").text()) + 1)
-                            $("#likes").text(parseInt($("#likes").text()) - 1)
-                            $("#like").attr("class", "text-body");
-                        } else if (data == 0) {
-                            $("#dislike").click();
-                        } else {
-                            console.error('unexpected output! report to https://github.com/bluffingo/OpenSB/issues');
-                        }
-                    }
-                });
-        }
+
+    dislikeBtn?.addEventListener("click", () => {
+        if (dislikeBtn.classList.contains("text-danger")) return;
+
+        postJSON("/api/legacy/rate", {
+            rating: 1,
+            vidid: video_id
+        }, (data) => {
+            if (data == 1) {
+                dislikeBtn.className = "text-danger";
+                likeBtn.className = "text-body";
+                dislikesCount.textContent = Number(dislikesCount.textContent) + 1;
+                likesCount.textContent = Number(likesCount.textContent) - 1;
+            }
+        });
     });
 });
