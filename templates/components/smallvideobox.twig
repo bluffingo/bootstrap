@@ -2,7 +2,7 @@
     <div class="card-body">
         <div class="row">
             <div class="col-5">
-                <a href="/view/{{ upload.id }}">
+                <a href="/watch?v={{ upload.id }}">
                     <div class="img-thumbnail" style="margin-bottom:0">
                         <img class="img-fluid"
                              src="{{ thumbnail(upload.id, upload.type, upload.flags.custom_thumbnail) }}">
@@ -10,7 +10,7 @@
                 </a>
             </div>
             <div class="col-7">
-                <h5><a href="/view/{{ upload.id }}">{{ upload.title }}</a></h5>
+                <h5><a href="/watch?v={{ upload.id }}">{{ upload.title }}</a></h5>
                 {# hack to prevent twig from outputing the number 1 #}
                 {% if upload.views != 1 %}
                     {% set pluralViews = "s" %}

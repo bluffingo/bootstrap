@@ -1,5 +1,5 @@
 function error(error) {
-    console.error("OpenSB Bootstrap Frontend Error: " + error);
+    console.error("OpenSB Bootstrap Skin Error: " + error);
 }
 
 document.addEventListener("DOMContentLoaded", () => {
