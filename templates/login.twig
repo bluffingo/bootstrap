@@ -1,6 +1,4 @@
-{% set layout_template = current_theme == 'alpha2' ? '_layout.twig' : '_layout-login.twig' %}
-
-{% extends layout_template %}
+{% extends "_layout-login.twig" %}
 
 {% block title %}Login{% endblock %}
 
@@ -10,13 +8,8 @@
                 <div class="alert alert-warning" role="alert">{{ error }}</div>
             {% endif %}
             <form method="post" name="loginForm" id="loginForm" action="/login">
-                {% if current_theme == "classic" %}
-                    <img class="mb-2" src="{{ logo }}" alt="{{ website_branding.name }}" width="90">
-                    <h3 class="mb-4 text-white">{{ localize('login') }}</h3>
-                {% else %}
-                    <a href="/"><img class="mb-2" src="{{ logo }}" alt="{{ website_branding.name }}" width="90"></a>
-                    <h1 class="mb-3 fs-3 text-white">{{ localize('login') }}</h1>
-                {% endif %}
+                <a href="/"><img class="mb-2" src="{{ logo }}" alt="{{ website_branding.name }}" width="90"></a>
+                <h1 class="mb-3 fs-3 text-white">{{ localize('login') }}</h1>
                 <div class="login-box">
                     <div class="card">
                         <div class="card-body">
