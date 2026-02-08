@@ -24,9 +24,7 @@
                     </div>
 
                     <div class="flex-grow-1">
-                        <h5 class="mb-1">
-                            {{ user_link(user) }}
-                        </h5>
+                        <div class="fw-bold">{{ user_link(user) }}</div>
                         <div class="text-muted small">
                             {{ level_titles[user.level]|default('Unknown') }}
                         </div>

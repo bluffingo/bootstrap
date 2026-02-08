@@ -8,26 +8,19 @@
     </div>
     <div class="card">
         <div class="card-body">
-            <div class="row align-items-center">
-                <div class="col-md-4">
-                    <img srcset="/assets/chaz_opensb.png, /assets/chaz_opensb_2x.png 2x" class="img-fluid">
-                </div>
-                <div class="col-md-8">
-                    <p>{{ localize('version_intro', '2021-' ~ ('now' | date('Y')), data.developers|join(', ')) }}</p>
-                    <p>{{ localize('version_agpl') }}</p>
-                    <p>{{ localize('version_no_warranty') }}</p>
-                    <p>{{ localize('version_license_notice', '/license', 'http://www.gnu.org/licenses/') | raw }}</p>
-                    <p>{{ localize('version_github', 'https://github.com/bluffingo/OpenSB') | raw }}</p>
-                    <table class="table">
-                        {% for thing in data.software %}
-                            <tr>
-                                <td class="a">{{ thing.title }}</td>
-                                <td class="b">{{ thing.info }}</td>
-                            </tr>
-                        {% endfor %}
-                    </table>
-                </div>
-            </div>
+            <p>{{ localize('version_intro', '2021-' ~ ('now' | date('Y')), data.developers|join(', ')) }}</p>
+            <p>{{ localize('version_agpl') }}</p>
+            <p>{{ localize('version_no_warranty') }}</p>
+            <p>{{ localize('version_license_notice', '/license', 'http://www.gnu.org/licenses/') | raw }}</p>
+            <p>{{ localize('version_github', 'https://github.com/bluffingo/OpenSB') | raw }}</p>
+            <table class="table table-sm table-borderless align-middle">
+                {% for thing in data.software %}
+                    <tr>
+                        <td class="fw-medium text-nowrap">{{ thing.title }}</td>
+                        <td class="text-muted">{{ thing.info }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
         </div>
     </div>
 {% endblock %}

@@ -19,9 +19,9 @@
                                 </a>
                                 <div>
                                     <div class="fw-bold">{{ user_link(user) }}</div>
-                                    <small class="text-muted">
+                                    <div class="text-muted small">
                                         {{ user.uploads }} uploads • {{ user.journals }} journals
-                                    </small>
+                                    </div>
                                 </div>
                             </div>
                             {% if not loop.last %}<hr class="my-3">{% endif %}
