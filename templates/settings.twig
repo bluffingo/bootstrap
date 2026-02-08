@@ -22,7 +22,7 @@
 
                     <div class="mb-3">
                         <label for="about" class="form-label">Profile description:</label>
-                        <textarea class="form-control" name="about" rows="4" wrap="hard">{{ user_data.about }}</textarea>
+                        <textarea class="form-control" name="about" rows="4">{{ user_data.about }}</textarea>
                     </div>
 
                     <div class="mb-3">
@@ -100,7 +100,7 @@
                     {% endif %}
 
                     <h3 class="h6 mb-3">Blocked tags</h3>
-                    <textarea class="form-control" name="blacklisted_tags" rows="5" cols="80" wrap="hard">{% for tag in user_data.blacklisted_tags %}{{ tag }},{% endfor %}</textarea>
+                    <textarea class="form-control" name="blacklisted_tags" rows="5" cols="80">{% for tag in user_data.blacklisted_tags %}{{ tag }},{% endfor %}</textarea>
                 </div>
 
                 <div class="text-end">
