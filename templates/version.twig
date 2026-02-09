@@ -14,6 +14,8 @@
                 <div class="col-md-8">
                     <div class="card">
                         <div class="card-body">
+                            {# awkwardly hardcoded #}
+                            <svg class="mb-3" width="180" height="41.4" fill="currentColor"><use href="/assets/icons.svg#opensb_logo"></use></svg>
                             <p>{{ localize('version_intro', '2021-' ~ ('now' | date('Y')), data.developers|join(', ')) }}</p>
                             <p>{{ localize('version_agpl') }}</p>
                             <p>{{ localize('version_no_warranty') }}</p>
