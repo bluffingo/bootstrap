@@ -1,9 +1,36 @@
-{% extends "_layout.twig" %}
+{% extends "_layout-login.twig" %}
 
 {% block content %}
-<div class="card card-body">
-    <p>Before doing anything (eg: uploading), you must first be verified.</p>
-    <p>Currently, this can only be done via joining the official <a href="https://discord.gg/jG3DaRf6Rm">FulpTube Discord server</a>.</p>
-    <p>We are currently <a href="{{ domain }}/read/280">looking for alternate options</a> regarding this. We apologize for the inconvenience.</p>
-</div>
+    <main class="form-signin">
+        <div class="login-box">
+            <a href="/"><img class="mb-2" src="{{ logo }}" alt="{{ website_branding.name }}" width="90"></a>
+            <h1 class="mb-3 fs-3 text-white">{{ localize('unverified_email_title') }}</h1>
+            <div class="card">
+                <div class="card-body text-start">
+                    <p>{{ localize('unverified_email') }}</p>
+                    {% if is_chaziz_sb and not is_fulptube %}
+                        <p>{{ localize('unverified_email_chaziz_instance') | raw }}</p>
+                    {% endif %}
+                    <div class="d-grid gap-2 d-md-flex">
+                        <form method="post"
+                            action="/verify_email"
+                            class="flex-fill m-0">
+                            <button
+                                type="submit"
+                                name="loginsubmit"
+                                class="btn btn-primary btn-lg w-100">
+                                {{ localize('resend') }}
+                            </button>
+                        </form>
+
+                        <a href="/logout"
+                        class="btn btn-secondary btn-lg flex-fill">
+                            {{ localize('logout') }}
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <p class="mt-3 text-white">{{ localize('footer_copyright', ('now' | date('Y'))) }}</p>
+    </div>
 {% endblock %}
