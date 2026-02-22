@@ -2,27 +2,27 @@
     "metadata": {
         "id": "bootstrap",
         "name": "Bootstrap",
-        "author": "Bluffingo Development",
-        "description": "The earlier look of SquareBracket.",
+        "author": "Carrevue Development",
+        "description": "The earlier look of squareBracket.",
         "site": "squarebracket",
         "themes": [
             {
                 "id": "default",
                 "name": "Default",
                 "description": "The default theme for this skin.",
-                "author": "Bluffingo Development"
+                "author": "Carrevue Development"
             },
             {
                 "id": "classic",
                 "name": "Classic",
-                "description": "Emulates the version of SquareBracket from mid-2021.",
-                "author": "Bluffingo Development"
+                "description": "Emulates the version of squareBracket from mid-2021.",
+                "author": "Carrevue Development"
             },
             {
                 "id": "vanilla",
                 "name": "Vanilla",
                 "description": "The default look of Bootstrap.",
-                "author": "Bluffingo Development"
+                "author": "Carrevue Development"
             },
             {
                 "id": "ardosia",
