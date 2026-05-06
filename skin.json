@@ -30,6 +30,9 @@
                 "description": "The Brickface/Quadium look.",
                 "author": "magnum22"
             }
-        ]
+        ],
+        "options": {
+            "use_old_userlink": true
+        }
     }
 }
