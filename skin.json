@@ -5,34 +5,35 @@
         "author": "Carrevue Development",
         "description": "The earlier look of squareBracket.",
         "site": "squarebracket",
-        "themes": [
-            {
-                "id": "default",
+        "themes": {
+            "default": {
                 "name": "Default",
                 "description": "The default theme for this skin.",
                 "author": "Carrevue Development"
             },
-            {
-                "id": "classic",
+            "classic": {
                 "name": "Classic",
                 "description": "Emulates the version of squareBracket from mid-2021.",
                 "author": "Carrevue Development"
             },
-            {
-                "id": "vanilla",
+            "vanilla": {
                 "name": "Vanilla",
                 "description": "The default look of Bootstrap.",
                 "author": "Carrevue Development"
             },
-            {
-                "id": "ardosia",
+            "ardosia": {
                 "name": "Ardosia",
                 "description": "The Brickface/Quadium look.",
                 "author": "magnum22"
             }
-        ],
+        },
         "options": {
-            "use_old_userlink": true
+            "use_old_userlink": true,
+            "storage": {
+                "default_pfp_override": "profiledef.png",
+                "default_video_thumbnail_override": "placeholder.png",
+                "default_image_thumbnail_override": "placeholder.png"
+            }
         }
     }
 }
