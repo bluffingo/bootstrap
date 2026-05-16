@@ -25,8 +25,8 @@
 								<a class="dropdown-item" href="{{ link.url }}">{{ link.name }}</a>
 							{% endfor %}
                             <hr>
-                            {% for link in header_user_account_links() %}
-				                <a class="dropdown-item" href="{{ link.url }}">{{ link.username }}</a>
+                            {% for link in header_user_switcher_links() %}
+				                <a class="dropdown-item" href="{{ link.url }}">{{ link.name }}</a>
 							{% endfor %}
                             <a class="dropdown-item" href="/login"><span><small>Add account</small></span></a>
 						</ul>
@@ -89,17 +89,17 @@
             {% for link in sidebar_following_users() %}
                 <li class="nav-item">
                     <a class="nav-link d-flex align-items-center gap-2 py-1 px-3"
-                       href="/user/{{ link.username }}">
+                       href="/user/{{ link.name }}">
                         <img
                             src="{{ profile_picture(link.id) }}"
-                            alt="{{ link.username }}"
+                            alt="{{ link.name }}"
                             class="rounded-circle flex-shrink-0"
                             width="32"
                             height="32"
                             loading="lazy"
                         >
                         <span class="text-truncate fs-6">
-                            {{ link.username }}
+                            {{ link.name }}
                         </span>
                     </a>
                 </li>
