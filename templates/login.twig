@@ -1,6 +1,6 @@
 {% extends "_layout-login.twig" %}
 
-{% block title %}Login{% endblock %}
+{% block title %}{{ localize('login') }}{% endblock %}
 
 	{% block content %}
         <main class="form-signin">
@@ -15,14 +15,14 @@
                         <div class="card-body">
                             <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}">
                             <div class="form-floating my-2">
-                                <input type="text" name="username" class="form-control" id="floatingInput"
-                                        placeholder="Username">
-                                <label for="floatingInput">Username</label>
+                                <input type="text" name="email" class="form-control" id="floatingInput"
+                                        placeholder="{{ localize('email_address') }}">
+                                <label for="floatingInput">{{ localize('email_address') }}</label>
                             </div>
                             <div class="form-floating my-2">
                                 <input type="password" name="password" class="form-control" id="floatingPassword"
-                                        placeholder="Password">
-                                <label for="floatingPassword">Password</label>
+                                        placeholder="{{ localize('password') }}">
+                                <label for="floatingPassword">{{ localize('password') }}</label>
                             </div>
                             {% if current_theme == "classic" %}
                             <div class="d-grid gap-2 d-md-flex justify-content-between">
