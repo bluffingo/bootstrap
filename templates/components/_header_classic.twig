@@ -18,7 +18,7 @@
         <div id="navbarCollapse" class="collapse navbar-collapse">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
             <ul class="navbar-nav">
-                {% if is_user_logged_in %}
+                {% if logged_in %}
                     <!-- can't put dropdown-toggle properly wtf -->
                     <li class="nav-item">
                         <a href="/upload" class="nav-link">
@@ -34,7 +34,7 @@
                         <a href="/register" class="btn btn-secondary">{{ localize('register') }}</a>
                     </div>
                 {% endif %}
-                {% if is_user_logged_in %}
+                {% if logged_in %}
                     <div class="dropdown nav-item">
                         <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                             <img src="{{ profile_picture(user_data.id) }}" alt="{{ user_data.name }}" class="rounded-circle" width="32" height="32">

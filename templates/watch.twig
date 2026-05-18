@@ -46,7 +46,7 @@
                                 </div>
                                 <div class="col-3 text-end">
                                     <a href="#"
-                                        id="{% if is_user_logged_in %}like{% else %}action_unlogged{% endif %}"
+                                        id="{% if logged_in %}like{% else %}action_unlogged{% endif %}"
                                         class="text-{% if upload.interactions.legacy.likes != 0 %}success{% else %}body{% endif %}"
                                         style="text-decoration: none;">
                                         {{ icon("hand-thumbs-up-fill", 20) }}
@@ -54,7 +54,7 @@
                                     <span id="likes">{{ upload.interactions.legacy.likes }}</span>
 
                                     <a href="#"
-                                        id="{% if is_user_logged_in %}dislike{% else %}action_unlogged{% endif %}"
+                                        id="{% if logged_in %}dislike{% else %}action_unlogged{% endif %}"
                                         class="text-{% if total_dislikesupload.interactions.legacy.dislikes != 0 %}danger{% else %}body{% endif %}"
                                         style="text-decoration: none;">
                                         {{ icon("hand-thumbs-down-fill", 20) }}
@@ -65,7 +65,7 @@
                                     <button id="subscribe"
                                             class="btn btn-{% if upload.author.following %}secondary{% else %}primary{% endif %}"
                                             type="button"
-                                            {% if not is_user_logged_in or upload.is_owner %}disabled{% endif %}>{% if upload.author.following %}Unfollow{% elseif upload.is_owner %}Edit{% else %}Follow{% endif %}</button>
+                                            {% if not logged_in or upload.is_owner %}disabled{% endif %}>{% if upload.author.following %}Unfollow{% elseif upload.is_owner %}Edit{% else %}Follow{% endif %}</button>
                                 </div>
                             </div>
                             <div style="margin-top: 1rem;">
@@ -115,12 +115,12 @@
                             <textarea class="form-control mt-2 mb-2" id="commentContents"
                                       style="overflow:hidden;resize:none"
                                       rows="3"
-                                      placeholder="{% if is_user_logged_in %}{{ localize('write_comment') }}{% else %}Please sign in in order to comment.{% endif %}"></textarea>
-                            {% if is_user_logged_in %}
+                                      placeholder="{% if logged_in %}{{ localize('write_comment') }}{% else %}Please sign in in order to comment.{% endif %}"></textarea>
+                            {% if logged_in %}
                                 <div class="d-grid gap-2 d-md-flex justify-content-md-end"
                                      style="margin-top:5px;margin-bottom:15px">
-                                <button id="{% if is_user_logged_in %}post{% endif %}"
-                                        class="btn btn-primary {% if not is_user_logged_in %}disabled{% endif %}">
+                                <button id="{% if logged_in %}post{% endif %}"
+                                        class="btn btn-primary {% if not logged_in %}disabled{% endif %}">
                                     {{ localize('post_action') }}
                                     <div class="spinner-border spinner-border-sm d-none" id="commentPostingSpinner"
                                          role="status" aria-hidden="true"><span

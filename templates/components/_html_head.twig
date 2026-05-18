@@ -13,12 +13,12 @@
 <meta property="og:site_name" content="{{ website_branding.name }}" />
 <link rel="preload" href="/assets/icons.svg" as="image" type="image/svg+xml">
 
-<link href="/assets/css/bootstrap-{{ current_theme }}.css?r={{ get_css_file_date() }}" rel="stylesheet" id="bootstrap">
+<link href="/assets/css/bootstrap-{{ current_theme }}.css?r={{ get_css_file_timestamp() }}" rel="stylesheet" id="bootstrap">
 <script>
     subscribe_string = '{{ localize('follow') }}';
     unsubscribe_string = '{{ localize('unfollow') }}';
     opensb_version = '{{ opensb_version.name }} {{ opensb_version.string }}';
 </script>
-<script src="/assets/bootstrap.js?r={{ get_css_file_date() }}"></script>
-<script src="/assets/skin/bootstrap/common.js?r={{ get_css_file_date() }}"></script>
-<script src="/assets/common.js?r={{ get_css_file_date() }}"></script>
+<script src="/assets/bootstrap.js?r={{ get_css_file_timestamp() }}"></script>
+<script src="/assets/skin/bootstrap/common.js?r={{ get_css_file_timestamp() }}"></script>
+<script src="/assets/common.js?r={{ get_css_file_timestamp() }}"></script>

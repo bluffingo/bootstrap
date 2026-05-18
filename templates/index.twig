@@ -31,7 +31,7 @@
             {% endfor %}
         </div>
         <div class="col-xl-4">
-            {% if is_user_logged_in %}
+            {% if logged_in %}
                     {% if current_theme == "classic" %}
                     {# hack to prevent twig from outputing the number 1 #}
                     {% if user_stat_data.followers != 1 %}
