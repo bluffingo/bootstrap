@@ -4,7 +4,7 @@
             <div class="col-4">
                 <a href="/watch?v={{ upload.id }}">
                     <div class="img-thumbnail">
-                        <img class="img-fluid" src="{{ thumbnail(upload.id, upload.type, upload.flags.custom_thumbnail) }}">
+                        <img class="img-fluid" src="{{ thumbnail(upload.id, upload.type, upload.flags.custom_thumbnail) }}" loading="lazy">
                     </div>
                 </a>
             </div>
